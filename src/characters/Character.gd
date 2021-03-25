@@ -1,7 +1,7 @@
 class_name Character
 extends KinematicBody2D
 
-var _state = null setget ,get_state
+var _state : State = null setget ,get_state
 var is_flipped : bool = false
 var possible_states : Dictionary = {}
 
@@ -12,6 +12,7 @@ onready var state_machine : Node = $StateMachine
 onready var tween : Tween
 onready var sprite : AnimatedSprite = $Pivot/Sprite
 onready var pivot : Position2D = $Pivot
+onready var hp : Node = $Attributes/Health
 
 signal state_changed
 
@@ -24,6 +25,7 @@ func _ready():
 
 
 func _physics_process(_delta):
+#	if _state.state_name != "dead":
 	var input = _state.get_raw_input()
 	change_state(_state.interpret_inputs(input))
 	_state.run(input)
@@ -40,3 +42,15 @@ func change_state(state_name, repeat = false):
 
 func get_state():
 	return _state
+
+
+#func _on_Health_attribute_depleted() -> void:
+#	change_state("dead")
+
+
+func take_damage(value : int) -> void:
+	hp.take_damage(value)
+
+
+#func _on_Health_attribute_changed() -> void:
+#	change_state("hurt")

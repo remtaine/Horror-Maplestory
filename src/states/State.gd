@@ -1,7 +1,7 @@
 class_name State
 extends Node
 
-const GRAVITY = 10
+const GRAVITY = 8
 
 var state_name := "State"
 onready var state_machine : Node = get_parent()
@@ -38,7 +38,7 @@ func exit():
 	pass
 
 
-func run(input):
+func run(_input):
 	#TODO ADD GRAVITY
 	owner.velocity.y += GRAVITY
 	owner.velocity = owner.move_and_slide(owner.velocity, Vector2.UP)

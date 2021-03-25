@@ -1,19 +1,62 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/states/StateMachine.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/white_square_pixel.png" type="Texture" id=4]
 [ext_resource path="res://src/UI/HPBar.gd" type="Script" id=5]
+[ext_resource path="res://resources/spritesheets/ArcherSpritesheet.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://src/debug/DebugHolder.gd" type="Script" id=7]
+[ext_resource path="res://src/addons/Scope.gd" type="Script" id=8]
+[ext_resource path="res://src/debug/ScopeVisualizer.gd" type="Script" id=9]
 
 [node name="Player" instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 17
 script = ExtResource( 2 )
+
+[node name="Sprite" parent="Pivot" index="0"]
+frames = ExtResource( 6 )
+animation = "falling"
+frame = 0
+
+[node name="Scope" type="RayCast2D" parent="Pivot" index="1"]
+position = Vector2( 7, 20 )
+enabled = true
+cast_to = Vector2( 500, 0 )
+collision_mask = 4
+collide_with_areas = true
+script = ExtResource( 8 )
+
+[node name="Debug" type="Control" parent="Pivot/Scope" index="0" groups=[
+"debug",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -7.0
+margin_top = -20.0
+margin_right = -7.0
+margin_bottom = -20.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScopeVisualizer" type="Line2D" parent="Pivot/Scope/Debug" index="0"]
+visible = false
+position = Vector2( 7, 20 )
+points = PoolVector2Array( 0, 0, 500, 0 )
+default_color = Color( 0.709804, 0, 1, 1 )
+script = ExtResource( 9 )
 
 [node name="StateMachine" parent="." index="2"]
 script = ExtResource( 3 )
 
 [node name="Moving" parent="StateMachine" index="2"]
-speed = 200
+speed = 150
+
+[node name="UI" parent="." index="4"]
+layer = 100
 
 [node name="HPBar" type="TextureProgress" parent="UI/UIPivot" index="0"]
 margin_left = 26.7697
@@ -21,7 +64,7 @@ margin_top = 25.6025
 margin_right = 27.7697
 margin_bottom = 26.6025
 rect_scale = Vector2( 300, 20 )
-value = 75.0
+value = 100.0
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 4 )
 tint_under = Color( 0.992157, 0.172549, 0.172549, 1 )
@@ -30,4 +73,10 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="attribute_changed" from="Attributes/Health" to="UI/UIPivot/HPBar" method="_on_Health_attribute_changed"]
+
+[node name="StateLabel" parent="Debug" index="0"]
+margin_left = -97.8241
+margin_top = -69.8831
+margin_right = 102.176
+margin_bottom = -51.8831
+[connection signal="attack_launched" from="StateMachine/Attacking" to="Pivot/Scope" method="_on_Attacking_attack_launched"]

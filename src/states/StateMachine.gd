@@ -17,7 +17,10 @@ func get_raw_input() -> Dictionary:
 
 
 func interpret_inputs(input):
-	if owner.get_state().state_name == "attacking" or input.is_attacking:
+	var state_name = owner.get_state().state_name
+	if state_name == "dead":
+		return "dead"
+	elif state_name == "attacking" or input.is_attacking:
 		return "attacking"
 		
 	if (owner.is_on_floor() and input.is_jumping) or owner.velocity.y < 0:

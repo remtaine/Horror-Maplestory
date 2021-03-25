@@ -1,12 +1,16 @@
 class_name Attacking
 extends State
 
+signal attack_launched
+
 func _ready():
 	state_name = "attacking"
 
 
 func enter() -> void:
 	owner.sprite.play("attacking")
+	emit_signal("attack_launched")
+	
 	
 func run(inputs):
 	if owner.is_on_floor():

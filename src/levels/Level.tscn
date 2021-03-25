@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/levels/Level.gd" type="Script" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://assets/images/tiles/Outside_Cx2-version.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/tiles/Outside_Bx2-version.png" type="Texture" id=8]
 [ext_resource path="res://src/environment/GroundHolder.gd" type="Script" id=9]
+[ext_resource path="res://src/characters/Jackalope.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/audio/themes/Base Ambience.ogg" type="AudioStream" id=11]
+[ext_resource path="res://src/characters/Character.gd" type="Script" id=12]
+[ext_resource path="res://resources/preset fonts/DebugFont.tres" type="DynamicFont" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 27
@@ -46,13 +50,11 @@ texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 693, 917, 348, 244 )
 
-[node name="GroundHolder" type="Node2D" parent="."]
-script = ExtResource( 9 )
-
-[node name="GroundTileMap1" type="TileMap" parent="GroundHolder"]
-tile_set = ExtResource( 3 )
-format = 1
-tile_data = PoolIntArray( 458739, 0, 0, 458740, 1, 0, 458741, 1, 0, 458742, 1, 0, 458743, 1, 0, 458744, 2, 0, 393221, 0, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 2, 0, 524275, 4, 0, 524276, 4, 0, 524277, 4, 0, 524278, 4, 0, 524279, 4, 0, 524280, 3, 0, 524281, 1, 0, 524282, 1, 0, 524283, 1, 0, 524284, 1, 0, 524285, 1, 0, 524286, 1, 0, 524287, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 5, 0, 458758, 4, 0, 458759, 4, 0, 458760, 4, 0, 458761, 4, 0, 458762, 4, 0, 458763, 3, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0, 458775, 1, 0, 458776, 1, 0, 458777, 1, 0, 458778, 1, 0, 589811, 4, 0, 589812, 4, 0, 589813, 4, 0, 589814, 4, 0, 589815, 4, 0, 589816, 4, 0, 589817, 4, 0, 589818, 4, 0, 589819, 4, 0, 589820, 4, 0, 589821, 4, 0, 589822, 4, 0, 589823, 4, 0, 524288, 4, 0, 524289, 4, 0, 524290, 4, 0, 524291, 4, 0, 524292, 4, 0, 524293, 4, 0, 524294, 4, 0, 524295, 4, 0, 524296, 4, 0, 524297, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 4, 0, 524306, 4, 0, 524307, 4, 0, 524308, 4, 0, 524309, 4, 0, 524310, 4, 0, 524311, 4, 0, 524312, 4, 0, 524313, 4, 0, 524314, 4, 0, 655347, 4, 0, 655348, 4, 0, 655349, 4, 0, 655350, 4, 0, 655351, 4, 0, 655352, 4, 0, 655353, 4, 0, 655354, 4, 0, 655355, 4, 0, 655356, 4, 0, 655357, 4, 0, 655358, 4, 0, 655359, 4, 0, 589824, 4, 0, 589825, 4, 0, 589826, 4, 0, 589827, 4, 0, 589828, 4, 0, 589829, 4, 0, 589830, 4, 0, 589831, 4, 0, 589832, 4, 0, 589833, 4, 0, 589834, 4, 0, 589835, 4, 0, 589836, 4, 0, 589837, 4, 0, 589838, 4, 0, 589839, 4, 0, 589840, 4, 0, 589841, 4, 0, 589842, 4, 0, 589843, 4, 0, 589844, 4, 0, 589845, 4, 0, 589846, 4, 0, 589847, 4, 0, 589848, 4, 0, 589849, 4, 0, 589850, 4, 0, 720883, 4, 0, 720884, 4, 0, 720885, 4, 0, 720886, 4, 0, 720887, 4, 0, 720888, 4, 0, 720889, 4, 0, 720890, 4, 0, 720891, 4, 0, 720892, 4, 0, 720893, 4, 0, 720894, 4, 0, 720895, 4, 0, 655360, 4, 0, 655361, 4, 0, 655362, 4, 0, 655363, 4, 0, 655364, 4, 0, 655365, 4, 0, 655366, 4, 0, 655367, 4, 0, 655368, 4, 0, 655369, 4, 0, 655370, 4, 0, 655371, 4, 0, 655372, 4, 0, 655373, 4, 0, 655374, 4, 0, 655375, 4, 0, 655376, 4, 0, 655377, 4, 0, 655378, 4, 0, 655379, 4, 0, 655380, 4, 0, 655381, 4, 0, 655382, 4, 0, 655383, 4, 0, 655384, 4, 0, 655385, 4, 0, 655386, 4, 0, 786419, 4, 0, 786420, 4, 0, 786421, 4, 0, 786422, 4, 0, 786423, 4, 0, 786424, 4, 0, 786425, 4, 0, 786426, 4, 0, 786427, 4, 0, 786428, 4, 0, 786429, 4, 0, 786430, 4, 0, 786431, 4, 0, 720896, 4, 0, 720897, 4, 0, 720898, 4, 0, 720899, 4, 0, 720900, 4, 0, 720901, 4, 0, 720902, 4, 0, 720903, 4, 0, 720904, 4, 0, 720905, 4, 0, 720906, 4, 0, 720907, 4, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 720917, 4, 0, 720918, 4, 0, 720919, 4, 0, 720920, 4, 0, 720921, 4, 0, 720922, 4, 0 )
+[node name="Objects8" type="Sprite" parent="ParallaxBackground/ParallaxLayer1"]
+position = Vector2( 576.028, 227.565 )
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 129.72, 982.333, 70.9042, 72.46 )
 
 [node name="Characters" type="Node" parent="."]
 
@@ -64,27 +66,40 @@ position = Vector2( 3.05176e-05, 136.011 )
 current = true
 limit_bottom = 600
 
+[node name="Jackalope1" parent="Characters" groups=[
+"character",
+] instance=ExtResource( 10 )]
+position = Vector2( -67.4482, -2.29938 )
+script = ExtResource( 12 )
+
+[node name="Jackalope2" parent="Characters" groups=[
+"character",
+] instance=ExtResource( 10 )]
+position = Vector2( 1189.39, 112.75 )
+script = ExtResource( 12 )
+
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 0
 
 [node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxForeground"]
 
 [node name="Objects1" type="Sprite" parent="ParallaxForeground/ParallaxLayer1"]
-position = Vector2( 130.116, 397.197 )
+position = Vector2( 130.116, 385.936 )
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( -75.7546, 1449.04, 342.633, 126.558 )
 
 [node name="Objects2" type="Sprite" parent="ParallaxForeground/ParallaxLayer1"]
-position = Vector2( -325.855, 396.082 )
+position = Vector2( -326.218, 385.548 )
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( -75.7546, 1449.04, 342.633, 126.558 )
 
 [node name="Objects3" type="Sprite" parent="ParallaxForeground/ParallaxLayer1"]
-position = Vector2( 457.88, 333.651 )
+position = Vector2( 453.158, 320.211 )
 texture = ExtResource( 8 )
 region_enabled = true
-region_rect = Rect2( 477.405, 1406.07, 117.946, 168.494 )
+region_rect = Rect2( 477.405, 1406.07, 117.946, 131.131 )
 
 [node name="Objects4" type="Sprite" parent="ParallaxForeground/ParallaxLayer1"]
 position = Vector2( 753.313, 340.34 )
@@ -93,13 +108,13 @@ region_enabled = true
 region_rect = Rect2( 187.516, 1254.63, 116.211, 89.2596 )
 
 [node name="Objects5" type="Sprite" parent="ParallaxForeground/ParallaxLayer1"]
-position = Vector2( 949.526, 373.785 )
+position = Vector2( 949.526, 363.977 )
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 1155.57, 759.776, 172.108, 224.406 )
 
 [node name="Objects6" type="Sprite" parent="ParallaxForeground/ParallaxLayer1"]
-position = Vector2( 1616.2, 389.393 )
+position = Vector2( 1615.84, 386.85 )
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 945.455, 1252.16, 187.322, 182.568 )
@@ -110,11 +125,14 @@ texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 385.924, 1402.94, 84.6279, 150.238 )
 
-[node name="Objects8" type="Sprite" parent="ParallaxForeground/ParallaxLayer1"]
-position = Vector2( 574.938, 219.937 )
-texture = ExtResource( 8 )
-region_enabled = true
-region_rect = Rect2( 129.72, 982.333, 70.9042, 72.46 )
+[node name="GroundHolder" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="GroundTileMap1" type="TileMap" parent="GroundHolder"]
+tile_set = ExtResource( 3 )
+collision_mask = 7
+format = 1
+tile_data = PoolIntArray( 458739, 0, 0, 458740, 1, 0, 458741, 1, 0, 458742, 1, 0, 458743, 1, 0, 458744, 2, 0, 393221, 0, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 2, 0, 524275, 4, 0, 524276, 4, 0, 524277, 4, 0, 524278, 4, 0, 524279, 4, 0, 524280, 3, 0, 524281, 1, 0, 524282, 1, 0, 524283, 1, 0, 524284, 1, 0, 524285, 1, 0, 524286, 1, 0, 524287, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 5, 0, 458758, 4, 0, 458759, 4, 0, 458760, 4, 0, 458761, 4, 0, 458762, 4, 0, 458763, 3, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0, 458775, 1, 0, 458776, 1, 0, 458777, 1, 0, 458778, 1, 0, 589811, 4, 0, 589812, 4, 0, 589813, 4, 0, 589814, 4, 0, 589815, 4, 0, 589816, 4, 0, 589817, 4, 0, 589818, 4, 0, 589819, 4, 0, 589820, 4, 0, 589821, 4, 0, 589822, 4, 0, 589823, 4, 0, 524288, 4, 0, 524289, 4, 0, 524290, 4, 0, 524291, 4, 0, 524292, 4, 0, 524293, 4, 0, 524294, 4, 0, 524295, 4, 0, 524296, 4, 0, 524297, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 4, 0, 524306, 4, 0, 524307, 4, 0, 524308, 4, 0, 524309, 4, 0, 524310, 4, 0, 524311, 4, 0, 524312, 4, 0, 524313, 4, 0, 524314, 4, 0, 655347, 4, 0, 655348, 4, 0, 655349, 4, 0, 655350, 4, 0, 655351, 4, 0, 655352, 4, 0, 655353, 4, 0, 655354, 4, 0, 655355, 4, 0, 655356, 4, 0, 655357, 4, 0, 655358, 4, 0, 655359, 4, 0, 589824, 4, 0, 589825, 4, 0, 589826, 4, 0, 589827, 4, 0, 589828, 4, 0, 589829, 4, 0, 589830, 4, 0, 589831, 4, 0, 589832, 4, 0, 589833, 4, 0, 589834, 4, 0, 589835, 4, 0, 589836, 4, 0, 589837, 4, 0, 589838, 4, 0, 589839, 4, 0, 589840, 4, 0, 589841, 4, 0, 589842, 4, 0, 589843, 4, 0, 589844, 4, 0, 589845, 4, 0, 589846, 4, 0, 589847, 4, 0, 589848, 4, 0, 589849, 4, 0, 589850, 4, 0, 720883, 4, 0, 720884, 4, 0, 720885, 4, 0, 720886, 4, 0, 720887, 4, 0, 720888, 4, 0, 720889, 4, 0, 720890, 4, 0, 720891, 4, 0, 720892, 4, 0, 720893, 4, 0, 720894, 4, 0, 720895, 4, 0, 655360, 4, 0, 655361, 4, 0, 655362, 4, 0, 655363, 4, 0, 655364, 4, 0, 655365, 4, 0, 655366, 4, 0, 655367, 4, 0, 655368, 4, 0, 655369, 4, 0, 655370, 4, 0, 655371, 4, 0, 655372, 4, 0, 655373, 4, 0, 655374, 4, 0, 655375, 4, 0, 655376, 4, 0, 655377, 4, 0, 655378, 4, 0, 655379, 4, 0, 655380, 4, 0, 655381, 4, 0, 655382, 4, 0, 655383, 4, 0, 655384, 4, 0, 655385, 4, 0, 655386, 4, 0, 786419, 4, 0, 786420, 4, 0, 786421, 4, 0, 786422, 4, 0, 786423, 4, 0, 786424, 4, 0, 786425, 4, 0, 786426, 4, 0, 786427, 4, 0, 786428, 4, 0, 786429, 4, 0, 786430, 4, 0, 786431, 4, 0, 720896, 4, 0, 720897, 4, 0, 720898, 4, 0, 720899, 4, 0, 720900, 4, 0, 720901, 4, 0, 720902, 4, 0, 720903, 4, 0, 720904, 4, 0, 720905, 4, 0, 720906, 4, 0, 720907, 4, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 720917, 4, 0, 720918, 4, 0, 720919, 4, 0, 720920, 4, 0, 720921, 4, 0, 720922, 4, 0 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -143,9 +161,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -503.963
-margin_top = -80.1031
-margin_right = -3.96301
-margin_bottom = -15.1031
+margin_top = -39.9999
+margin_right = -3.96295
+margin_bottom = -12.9999
 custom_fonts/font = SubResource( 1 )
 text = "FPS: 60"
 align = 2
@@ -154,5 +172,27 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="ground_set" from="GroundHolder" to="Characters/Player" method="_on_GroundHolder_ground_set"]
+
+[node name="Instructions" type="Label" parent="CanvasLayer/Debug"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.44
+margin_top = -39.9999
+margin_right = 445.44
+margin_bottom = -12.9999
+custom_fonts/font = ExtResource( 13 )
+text = "R - reset   G - toggle debug"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Theme" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 11 )
+autoplay = true
 [connection signal="edge_reached" from="Characters/Player" to="GroundHolder" method="_on_Player_edge_reached"]
+[connection signal="state_changed" from="Characters/Jackalope1" to="Characters/Jackalope1/Debug/StateLabel" method="_on_Character_state_changed"]
+[connection signal="state_changed" from="Characters/Jackalope2" to="Characters/Jackalope2/Debug/StateLabel" method="_on_Character_state_changed"]
+[connection signal="ground_set" from="GroundHolder" to="Characters/Player" method="_on_GroundHolder_ground_set"]
