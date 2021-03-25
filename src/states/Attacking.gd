@@ -9,7 +9,8 @@ func enter() -> void:
 	owner.sprite.play("attacking")
 	
 func run(inputs):
-	owner.velocity.x = lerp(owner.velocity.x, 0, 0.3)
+	if owner.is_on_floor():
+		owner.velocity.x = lerp(owner.velocity.x, 0, 0.05)
 	.run(inputs)
 
 

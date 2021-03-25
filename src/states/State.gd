@@ -1,7 +1,7 @@
 class_name State
 extends Node
 
-const GRAVITY = 20
+const GRAVITY = 10
 
 var state_name := "State"
 onready var state_machine : Node = get_parent()

@@ -2,7 +2,7 @@ extends Camera2D
 
 
 func _ready() -> void:
-	owner = get_parent()
+	owner = get_parent().get_parent()
 
 
 func _process(delta: float) -> void:

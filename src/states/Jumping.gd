@@ -1,13 +1,14 @@
 class_name Jumping
 extends State
 
+const JUMP_SPEED := 350
 func _ready():
 	state_name = "jumping"
 
 
 func enter() -> void:
 	owner.sprite.play("falling")
-	owner.velocity.y = -500
+	owner.velocity.y = -JUMP_SPEED
 
 func run(inputs):
 	owner.velocity.y += GRAVITY
