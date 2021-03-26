@@ -25,7 +25,7 @@ func interpret_inputs(input):
 		
 	if (owner.is_on_floor() and input.is_jumping) or owner.velocity.y < 0:
 		return "jumping"
-	elif not owner.is_on_floor():
+	elif not owner.is_on_floor() and not owner.is_flying:
 		return "falling"
 	
 	if input.is_moving:

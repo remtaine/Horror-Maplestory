@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/characters/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/spritesheets/StagBeetleSpritesheet.tres" type="SpriteFrames" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 44.6665, 22.8195 )
+
+[node name="StagBeetle" instance=ExtResource( 1 )]
+is_flying = true
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( -21.3814, -8.26871 )
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="Pivot" index="0"]
+frames = ExtResource( 2 )
+animation = "idle"
+frame = 3
+playing = true
+
+[node name="StateLabel" parent="Debug" index="0"]
+margin_left = -101.389
+margin_top = -96.2686
+margin_right = 98.611
+margin_bottom = -69.2686

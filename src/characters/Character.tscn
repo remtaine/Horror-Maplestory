@@ -24,7 +24,7 @@
 [ext_resource path="res://assets/audio/footsteps/Player_FS-002.wav" type="AudioStream" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.8036, 23.1365 )
+extents = Vector2( 44.6665, 22.8195 )
 
 [node name="Character" type="KinematicBody2D" groups=[
 "character",
@@ -153,7 +153,7 @@ volume_db = -16.0
 stream = ExtResource( 20 )
 volume_db = -16.0
 [connection signal="state_changed" from="." to="Debug/StateLabel" method="_on_Character_state_changed"]
-[connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Attacking" method="_on_Sprite_animation_finished"]
 [connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Dead" method="_on_Sprite_animation_finished"]
+[connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Attacking" method="_on_Sprite_animation_finished"]
 [connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Hurt" method="_on_Sprite_animation_finished"]
 [connection signal="frame_changed" from="Pivot/Sprite" to="StateMachine/Moving" method="_on_Sprite_frame_changed"]

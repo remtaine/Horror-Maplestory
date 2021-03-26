@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/levels/Level.gd" type="Script" id=2]
@@ -13,6 +13,11 @@
 [ext_resource path="res://assets/audio/themes/Base Ambience.ogg" type="AudioStream" id=11]
 [ext_resource path="res://assets/images/backgrounds/far backgrounds/swamp-bg1.png" type="Texture" id=12]
 [ext_resource path="res://resources/preset fonts/DebugFont.tres" type="DynamicFont" id=13]
+[ext_resource path="res://assets/images/backgrounds/treeline2-lc.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/backgrounds/black treeline without eye.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/backgrounds/black treeline with eye.png" type="Texture" id=16]
+[ext_resource path="res://src/characters/StagBeetle.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/characters/Character.gd" type="Script" id=18]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -106,7 +111,7 @@ path = "res://src/menus/MainMenu.tscn"
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.3, 1 )
+motion_scale = Vector2( 0.2, 0.9 )
 motion_mirroring = Vector2( 900, 0 )
 
 [node name="SwampBG1-1" type="TextureRect" parent="ParallaxBackground/ParallaxLayer1"]
@@ -136,6 +141,230 @@ __meta__ = {
 }
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+modulate = Color( 0.149841, 0.154148, 0.21875, 1 )
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 800, 0 )
+
+[node name="Pic1" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( -22.4727, -35.441, 131.024, 643.969 )
+
+[node name="Pic2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( -22.4727, -35.441, 131.024, 643.969 )
+
+[node name="Pic3" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( -800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( -22.4727, -35.441, 146.473, 643.969 )
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+modulate = Color( 0.149841, 0.154148, 0.21875, 1 )
+position = Vector2( 0, 371.083 )
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 800, 0 )
+
+[node name="Pic1" type="Sprite" parent="ParallaxBackground/ParallaxLayer7"]
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( -22.4727, -35.441, 131.024, 643.969 )
+
+[node name="Pic2" type="Sprite" parent="ParallaxBackground/ParallaxLayer7"]
+position = Vector2( 800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( -22.4727, -35.441, 131.024, 643.969 )
+
+[node name="Pic3" type="Sprite" parent="ParallaxBackground/ParallaxLayer7"]
+position = Vector2( -800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( -22.4727, -35.441, 146.473, 643.969 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+modulate = Color( 0.101961, 0.101961, 0.164706, 1 )
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 800, 0 )
+
+[node name="Pic2" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 250.726, -24.29, 152.274, 646.757 )
+
+[node name="Pic3" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 250.726, -24.29, 175.628, 646.757 )
+
+[node name="Pic4" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( -800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 250.726, -24.29, 175.628, 646.757 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 800, 0 )
+
+[node name="Pic3" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 590.831, -10.3513, 147.169, 630.03 )
+
+[node name="Pic4" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 590.831, -10.3513, 147.75, 630.03 )
+
+[node name="Pic5" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( -800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 590.831, -10.3513, 147.75, 630.03 )
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.133333, 0.12549, 0.12549, 1 )
+position = Vector2( 635.615, 176.467 )
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer5"]
+margin_top = -227.513
+margin_right = 900.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer5"]
+margin_left = 1000.0
+margin_top = -227.513
+margin_right = 1900.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="ParallaxBackground/ParallaxLayer5"]
+margin_left = -1000.0
+margin_top = -227.513
+margin_right = -100.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer5"]
+margin_left = 772.191
+margin_top = 249.673
+margin_right = 1772.19
+margin_bottom = 749.673
+color = Color( 0.0196078, 0.0117647, 0.0117647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.156863, 0.12549, 0.12549, 1 )
+position = Vector2( 635.615, 176.467 )
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer8"]
+margin_top = -227.513
+margin_right = 900.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer8"]
+margin_left = 1000.0
+margin_top = -227.513
+margin_right = 1900.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="ParallaxBackground/ParallaxLayer8"]
+margin_left = -1000.0
+margin_top = -227.513
+margin_right = -100.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer8"]
+margin_left = 772.191
+margin_top = 249.673
+margin_right = 1772.19
+margin_bottom = 749.673
+color = Color( 0.0196078, 0.0117647, 0.0117647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.380392, 0.364706, 0.517647, 1 )
+position = Vector2( 448.447, 176.467 )
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 2000, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer6"]
+margin_top = -227.513
+margin_right = 900.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer6"]
+margin_left = 2000.0
+margin_top = -227.513
+margin_right = 2900.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="ParallaxBackground/ParallaxLayer6"]
+margin_left = -2000.0
+margin_top = -227.513
+margin_right = -1100.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -171,13 +400,31 @@ position = Vector2( 500, 113.637 )
 [node name="Camera2D" type="Camera2D" parent="Characters/Player"]
 position = Vector2( 3.05176e-05, 136.011 )
 current = true
-limit_bottom = 600
+limit_bottom = 575
 
-[node name="Jackalope1" parent="Characters" instance=ExtResource( 10 )]
+[node name="Jackalope1" parent="Characters" groups=[
+"character",
+] instance=ExtResource( 10 )]
 position = Vector2( -67.4482, -2.29938 )
+script = ExtResource( 18 )
 
-[node name="Jackalope2" parent="Characters" instance=ExtResource( 10 )]
-position = Vector2( 1189.39, 112.75 )
+[node name="Jackalope2" parent="Characters" groups=[
+"character",
+] instance=ExtResource( 10 )]
+position = Vector2( 1189.39, 138.652 )
+script = ExtResource( 18 )
+
+[node name="StagBeetle" parent="Characters" groups=[
+"character",
+] instance=ExtResource( 17 )]
+position = Vector2( -369.112, 305.634 )
+script = ExtResource( 18 )
+
+[node name="StagBeetle2" parent="Characters" groups=[
+"character",
+] instance=ExtResource( 17 )]
+position = Vector2( 1467.04, 338.548 )
+script = ExtResource( 18 )
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 0
@@ -244,10 +491,10 @@ __meta__ = {
 
 [node name="Fog" type="ColorRect" parent="PostProcessing"]
 material = SubResource( 2 )
-margin_left = -1721.07
-margin_top = -605.351
-margin_right = 2278.93
-margin_bottom = 1394.65
+margin_left = -1570.42
+margin_top = -770.262
+margin_right = 2429.58
+margin_bottom = 1229.74
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -320,7 +567,7 @@ margin_top = -39.9999
 margin_right = 445.44
 margin_bottom = -12.9999
 custom_fonts/font = ExtResource( 13 )
-text = "R - reset   M - Main Menu   G - toggle debug"
+text = "R - reset   M - main menu   G - toggle debug"
 valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -332,4 +579,8 @@ __meta__ = {
 stream = ExtResource( 11 )
 autoplay = true
 [connection signal="edge_reached" from="Characters/Player" to="GroundHolder" method="_on_Player_edge_reached"]
+[connection signal="state_changed" from="Characters/Jackalope1" to="Characters/Jackalope1/Debug/StateLabel" method="_on_Character_state_changed"]
+[connection signal="state_changed" from="Characters/Jackalope2" to="Characters/Jackalope2/Debug/StateLabel" method="_on_Character_state_changed"]
+[connection signal="state_changed" from="Characters/StagBeetle" to="Characters/StagBeetle/Debug/StateLabel" method="_on_Character_state_changed"]
+[connection signal="state_changed" from="Characters/StagBeetle2" to="Characters/StagBeetle2/Debug/StateLabel" method="_on_Character_state_changed"]
 [connection signal="ground_set" from="GroundHolder" to="Characters/Player" method="_on_GroundHolder_ground_set"]

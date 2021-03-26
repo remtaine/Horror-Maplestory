@@ -7,13 +7,13 @@
 size = 90
 font_data = ExtResource( 1 )
 
-[sub_resource type="InputEventAction" id=3]
+[sub_resource type="InputEventAction" id=2]
 action = "ui_accept"
 
-[sub_resource type="ShortCut" id=4]
-shortcut = SubResource( 3 )
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 18
 font_data = ExtResource( 1 )
 
@@ -69,7 +69,7 @@ __meta__ = {
 }
 
 [node name="Start" parent="CanvasLayer/UIControl/Buttons" instance=ExtResource( 2 )]
-shortcut = SubResource( 4 )
+shortcut = SubResource( 3 )
 text = "Start"
 path = "res://src/levels/Level.tscn"
 
@@ -97,7 +97,10 @@ margin_left = -50.8972
 margin_top = -21.809
 margin_right = -4.89722
 margin_bottom = -3.80896
-custom_fonts/font = SubResource( 2 )
-text = "v0.1.1"
+custom_fonts/font = SubResource( 4 )
+text = "v0.1.2"
 align = 2
 valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

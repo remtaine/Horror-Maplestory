@@ -1,6 +1,8 @@
 class_name Character
 extends KinematicBody2D
 
+export var is_flying := false
+var speed := 0
 var _state : State = null setget ,get_state
 var is_flipped : bool = false
 var possible_states : Dictionary = {}

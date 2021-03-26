@@ -9,11 +9,12 @@ onready var tween : Tween = $Tween
 func _ready():
 	state_name = "moving"
 	owner = get_parent().get_parent()
-
+	owner.speed = self.speed
+	
 func run(input):
 
 	owner.direction = input.input_direction.normalized()
-	owner.velocity.x = owner.direction.x * speed
+	owner.velocity.x = owner.direction.x * owner.speed
 
 	if owner.velocity.x < 0:
 		owner.pivot.scale.x = -1	

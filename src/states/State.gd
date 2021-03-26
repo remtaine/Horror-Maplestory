@@ -40,7 +40,8 @@ func exit():
 
 func run(_input):
 	#TODO ADD GRAVITY
-	owner.velocity.y += GRAVITY
+	if not owner.is_flying:
+		owner.velocity.y += GRAVITY
 	owner.velocity = owner.move_and_slide(owner.velocity, Vector2.UP)
 #	if owner.is_on_floor():
 #		owner.velocity.y = 0

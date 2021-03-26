@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=2]
@@ -9,11 +9,19 @@
 [ext_resource path="res://src/debug/DebugHolder.gd" type="Script" id=7]
 [ext_resource path="res://src/addons/Scope.gd" type="Script" id=8]
 [ext_resource path="res://src/debug/ScopeVisualizer.gd" type="Script" id=9]
+[ext_resource path="res://assets/images/archer/archer-idle.png" type="Texture" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9.95538, 22.8195 )
 
 [node name="Player" instance=ExtResource( 1 )]
 collision_layer = 2
 collision_mask = 17
 script = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( -0.847902, 9.08641 )
+shape = SubResource( 1 )
 
 [node name="Sprite" parent="Pivot" index="0"]
 frames = ExtResource( 6 )
@@ -59,10 +67,10 @@ speed = 75
 layer = 100
 
 [node name="HPBar" type="TextureProgress" parent="UI/UIPivot" index="0"]
-margin_left = 26.7697
-margin_top = 25.6025
-margin_right = 27.7697
-margin_bottom = 26.6025
+margin_left = 66.7365
+margin_top = 38.5149
+margin_right = 67.7365
+margin_bottom = 39.5149
 rect_scale = Vector2( 300, 20 )
 value = 100.0
 texture_under = ExtResource( 4 )
@@ -74,6 +82,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Head" type="Sprite" parent="UI/UIPivot/HPBar" index="0"]
+position = Vector2( -0.0647621, 0.171886 )
+scale = Vector2( 0.00333333, 0.05 )
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 8.25938, 16.174, 89.0857, 63.5161 )
+
 [node name="StateLabel" parent="Debug" index="0"]
 margin_left = -97.8241
 margin_top = -69.8831
@@ -82,25 +97,19 @@ margin_bottom = -51.8831
 
 [node name="Footsteps1" parent="Audio/Footsteps" index="0"]
 volume_db = -4.0
-pitch_scale = 0.9
 
 [node name="Footsteps2" parent="Audio/Footsteps" index="1"]
 volume_db = -4.0
-pitch_scale = 0.9
 
 [node name="Footsteps3" parent="Audio/Footsteps" index="2"]
 volume_db = -4.0
-pitch_scale = 0.9
 
 [node name="Footsteps4" parent="Audio/Footsteps" index="3"]
 volume_db = -4.0
-pitch_scale = 0.9
 
 [node name="Footsteps5" parent="Audio/Footsteps" index="4"]
 volume_db = -4.0
-pitch_scale = 0.9
 
 [node name="Footsteps6" parent="Audio/Footsteps" index="5"]
 volume_db = -4.0
-pitch_scale = 0.9
 [connection signal="attack_launched" from="StateMachine/Attacking" to="Pivot/Scope" method="_on_Attacking_attack_launched"]
