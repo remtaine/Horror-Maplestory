@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/levels/Level.gd" type="Script" id=2]
@@ -11,13 +11,10 @@
 [ext_resource path="res://src/environment/GroundHolder.gd" type="Script" id=9]
 [ext_resource path="res://src/characters/Jackalope.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/audio/themes/Base Ambience.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/images/backgrounds/far backgrounds/swamp-bg1.png" type="Texture" id=12]
 [ext_resource path="res://resources/preset fonts/DebugFont.tres" type="DynamicFont" id=13]
 
-[sub_resource type="DynamicFont" id=1]
-size = 27
-font_data = ExtResource( 5 )
-
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 // Gonkee's fog shader for Godot 3 - full tutorial https://youtu.be/QEaTsz_0o44
@@ -67,37 +64,100 @@ void fragment() {
 	COLOR = vec4(color, final * 0.5);
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/color = Vector3( 0.35, 0.35, 0.4 )
 shader_param/OCTAVES = 3
 
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+uniform vec2 player_position;
+uniform vec4 color : hint_color = vec4(0.305, 0.298, 0.341,1);
+
+uniform float MULTIPLIER = 0.56;
+uniform float SCALE = 0.5;
+uniform float SOFTNESS = 0.45;
+uniform float SMOOTH_STEP = 0.2;
+
+void fragment(){
+	float val = distance(vec2(UV.x , UV.y * MULTIPLIER), vec2(player_position.x , player_position.y * MULTIPLIER));
+	val = val / SCALE;
+	float vignette = smoothstep(SMOOTH_STEP, SOFTNESS, val);
+	COLOR = vec4(color.rgb , vignette );
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/player_position = Vector2( 0.5, 0.5 )
+shader_param/color = Color( 0, 0, 0, 1 )
+shader_param/MULTIPLIER = 0.7
+shader_param/SCALE = 0.5
+shader_param/SOFTNESS = 2.0
+shader_param/SMOOTH_STEP = 0.2
+
+[sub_resource type="DynamicFont" id=5]
+size = 27
+font_data = ExtResource( 5 )
+
 [node name="Level" type="Node"]
 script = ExtResource( 2 )
+path = "res://src/menus/MainMenu.tscn"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 900, 0 )
 
-[node name="Objects1" type="Sprite" parent="ParallaxBackground/ParallaxLayer1"]
+[node name="SwampBG1-1" type="TextureRect" parent="ParallaxBackground/ParallaxLayer1"]
+margin_right = 900.0
+margin_bottom = 600.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwampBG1-2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer1"]
+margin_left = 900.0
+margin_right = 1800.0
+margin_bottom = 600.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwampBG1-3" type="TextureRect" parent="ParallaxBackground/ParallaxLayer1"]
+margin_left = -900.0
+margin_right = -6.10352e-05
+margin_bottom = 600.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Objects1" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 1277.29, 254.28 )
 texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 759, 1164, 680, 389 )
 
-[node name="Objects2" type="Sprite" parent="ParallaxBackground/ParallaxLayer1"]
+[node name="Objects2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( -49.7838, 340.768 )
 texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 33, 1315, 708, 221.152 )
 
-[node name="Objects4" type="Sprite" parent="ParallaxBackground/ParallaxLayer1"]
+[node name="Objects4" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 569.061, 273.382 )
 texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 693, 917, 348, 244 )
 
-[node name="Objects8" type="Sprite" parent="ParallaxBackground/ParallaxLayer1/Objects4"]
+[node name="Objects8" type="Sprite" parent="ParallaxBackground/ParallaxLayer/Objects4"]
 position = Vector2( 6.96704, -45.817 )
 texture = ExtResource( 8 )
 region_enabled = true
@@ -175,7 +235,45 @@ collision_mask = 7
 format = 1
 tile_data = PoolIntArray( 458739, 0, 0, 458740, 1, 0, 458741, 1, 0, 458742, 1, 0, 458743, 1, 0, 458744, 2, 0, 393221, 0, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 2, 0, 524275, 4, 0, 524276, 4, 0, 524277, 4, 0, 524278, 4, 0, 524279, 4, 0, 524280, 3, 0, 524281, 1, 0, 524282, 1, 0, 524283, 1, 0, 524284, 1, 0, 524285, 1, 0, 524286, 1, 0, 524287, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 5, 0, 458758, 4, 0, 458759, 4, 0, 458760, 4, 0, 458761, 4, 0, 458762, 4, 0, 458763, 3, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0, 458775, 1, 0, 458776, 1, 0, 458777, 1, 0, 458778, 1, 0, 589811, 4, 0, 589812, 4, 0, 589813, 4, 0, 589814, 4, 0, 589815, 4, 0, 589816, 4, 0, 589817, 4, 0, 589818, 4, 0, 589819, 4, 0, 589820, 4, 0, 589821, 4, 0, 589822, 4, 0, 589823, 4, 0, 524288, 4, 0, 524289, 4, 0, 524290, 4, 0, 524291, 4, 0, 524292, 4, 0, 524293, 4, 0, 524294, 4, 0, 524295, 4, 0, 524296, 4, 0, 524297, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 4, 0, 524306, 4, 0, 524307, 4, 0, 524308, 4, 0, 524309, 4, 0, 524310, 4, 0, 524311, 4, 0, 524312, 4, 0, 524313, 4, 0, 524314, 4, 0, 655347, 4, 0, 655348, 4, 0, 655349, 4, 0, 655350, 4, 0, 655351, 4, 0, 655352, 4, 0, 655353, 4, 0, 655354, 4, 0, 655355, 4, 0, 655356, 4, 0, 655357, 4, 0, 655358, 4, 0, 655359, 4, 0, 589824, 4, 0, 589825, 4, 0, 589826, 4, 0, 589827, 4, 0, 589828, 4, 0, 589829, 4, 0, 589830, 4, 0, 589831, 4, 0, 589832, 4, 0, 589833, 4, 0, 589834, 4, 0, 589835, 4, 0, 589836, 4, 0, 589837, 4, 0, 589838, 4, 0, 589839, 4, 0, 589840, 4, 0, 589841, 4, 0, 589842, 4, 0, 589843, 4, 0, 589844, 4, 0, 589845, 4, 0, 589846, 4, 0, 589847, 4, 0, 589848, 4, 0, 589849, 4, 0, 589850, 4, 0, 720883, 4, 0, 720884, 4, 0, 720885, 4, 0, 720886, 4, 0, 720887, 4, 0, 720888, 4, 0, 720889, 4, 0, 720890, 4, 0, 720891, 4, 0, 720892, 4, 0, 720893, 4, 0, 720894, 4, 0, 720895, 4, 0, 655360, 4, 0, 655361, 4, 0, 655362, 4, 0, 655363, 4, 0, 655364, 4, 0, 655365, 4, 0, 655366, 4, 0, 655367, 4, 0, 655368, 4, 0, 655369, 4, 0, 655370, 4, 0, 655371, 4, 0, 655372, 4, 0, 655373, 4, 0, 655374, 4, 0, 655375, 4, 0, 655376, 4, 0, 655377, 4, 0, 655378, 4, 0, 655379, 4, 0, 655380, 4, 0, 655381, 4, 0, 655382, 4, 0, 655383, 4, 0, 655384, 4, 0, 655385, 4, 0, 655386, 4, 0, 786419, 4, 0, 786420, 4, 0, 786421, 4, 0, 786422, 4, 0, 786423, 4, 0, 786424, 4, 0, 786425, 4, 0, 786426, 4, 0, 786427, 4, 0, 786428, 4, 0, 786429, 4, 0, 786430, 4, 0, 786431, 4, 0, 720896, 4, 0, 720897, 4, 0, 720898, 4, 0, 720899, 4, 0, 720900, 4, 0, 720901, 4, 0, 720902, 4, 0, 720903, 4, 0, 720904, 4, 0, 720905, 4, 0, 720906, 4, 0, 720907, 4, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 720917, 4, 0, 720918, 4, 0, 720919, 4, 0, 720920, 4, 0, 720921, 4, 0, 720922, 4, 0 )
 
+[node name="PostProcessing" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fog" type="ColorRect" parent="PostProcessing"]
+material = SubResource( 2 )
+margin_left = -1721.07
+margin_top = -605.351
+margin_right = 2278.93
+margin_bottom = 1394.65
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Darkness" type="ColorRect" parent="PostProcessing"]
+self_modulate = Color( 1, 1, 1, 0.0823529 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1721.07
+margin_top = -605.351
+margin_right = 2278.93
+margin_bottom = 1394.65
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Vignette" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
@@ -205,7 +303,7 @@ margin_left = -503.963
 margin_top = -39.9999
 margin_right = -3.96295
 margin_bottom = -12.9999
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 5 )
 text = "FPS: 60"
 align = 2
 valign = 2
@@ -222,36 +320,8 @@ margin_top = -39.9999
 margin_right = 445.44
 margin_bottom = -12.9999
 custom_fonts/font = ExtResource( 13 )
-text = "R - reset   G - toggle debug"
+text = "R - reset   M - Main Menu   G - toggle debug"
 valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ParallaxForeground2" type="ParallaxBackground" parent="."]
-layer = 0
-
-[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxForeground2"]
-
-[node name="Fog" type="ColorRect" parent="ParallaxForeground2/ParallaxLayer1"]
-material = SubResource( 3 )
-margin_left = -1721.07
-margin_top = -605.351
-margin_right = 2278.93
-margin_bottom = 1394.65
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Darkness" type="ColorRect" parent="ParallaxForeground2/ParallaxLayer1"]
-self_modulate = Color( 1, 1, 1, 0.0823529 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -1721.07
-margin_top = -605.351
-margin_right = 2278.93
-margin_bottom = 1394.65
-color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
