@@ -33,6 +33,5 @@ func _physics_process(delta: float) -> void:
 
 		ground_set = true
 
-
 #func _on_GroundHolder_ground_set() -> void:
 #	ground_set = true

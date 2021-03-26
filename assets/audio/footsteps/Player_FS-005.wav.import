@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Player_FS-005.wav-73826e65939a6b0168a5fa7cf61f357d.sample"
+
+[deps]
+
+source_file="res://assets/audio/footsteps/Player_FS-005.wav"
+dest_files=[ "res://.import/Player_FS-005.wav-73826e65939a6b0168a5fa7cf61f357d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

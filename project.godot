@@ -124,7 +124,7 @@ _global_script_class_icons={
 
 config/name="Horror Maplestory"
 run/main_scene="res://src/levels/Level.tscn"
-config/icon="res://assets/default/icon.png"
+config/icon="res://assets/images/archer/archer-fall.png"
 
 [display]
 

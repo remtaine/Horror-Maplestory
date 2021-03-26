@@ -44,13 +44,15 @@ func get_state():
 	return _state
 
 
-#func _on_Health_attribute_depleted() -> void:
-#	change_state("dead")
-
+func play_sound(audio : String) -> void:
+	randomize()
+	var sound_holder : Node
+	match audio:
+		"moving":
+			sound_holder = $Audio/Footsteps
+		"landing":
+			sound_holder = $Audio/Landing
+	sound_holder.get_child(randi() % sound_holder.get_child_count()).play()
 
 func take_damage(value : int) -> void:
 	hp.take_damage(value)
-
-
-#func _on_Health_attribute_changed() -> void:
-#	change_state("hurt")

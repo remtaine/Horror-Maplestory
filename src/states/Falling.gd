@@ -8,6 +8,9 @@ func _ready():
 func enter() -> void:
 	owner.sprite.play("falling")
 
+func exit() -> void:
+	owner.play_sound("landing")
+
 #func exit() -> void:
 #	owner.velocity.y = 0
 

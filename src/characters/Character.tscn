@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://resources/spritesheets/JackalopeSpritesheet.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://src/states/Dead.gd" type="Script" id=2]
 [ext_resource path="res://src/states/Hurt.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/footsteps/Player_FS-005.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/landing/Player_Land-001.wav" type="AudioStream" id=5]
 [ext_resource path="res://src/characters/Character.gd" type="Script" id=6]
 [ext_resource path="res://src/states/Idle.gd" type="Script" id=7]
 [ext_resource path="res://src/states/Moving.gd" type="Script" id=8]
@@ -11,10 +13,17 @@
 [ext_resource path="res://src/debug/StateLabel.gd" type="Script" id=11]
 [ext_resource path="res://src/debug/DebugHolder.gd" type="Script" id=12]
 [ext_resource path="res://src/states/Falling.gd" type="Script" id=13]
+[ext_resource path="res://assets/audio/footsteps/Player_FS-006.wav" type="AudioStream" id=14]
 [ext_resource path="res://src/states/Jumping.gd" type="Script" id=15]
 [ext_resource path="res://src/states/Attacking.gd" type="Script" id=16]
+[ext_resource path="res://assets/audio/landing/Player_Land-002.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/audio/footsteps/Player_FS-003.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/audio/footsteps/Player_FS-004.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/audio/landing/Player_Land-003.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/audio/footsteps/Player_FS-001.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/audio/footsteps/Player_FS-002.wav" type="AudioStream" id=22]
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.8036, 23.1365 )
 
 [node name="Character" type="KinematicBody2D" groups=[
@@ -25,7 +34,7 @@ script = ExtResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2.51219, 10.0028 )
 scale = Vector2( 1.28, 2.56 )
-shape = SubResource( 14 )
+shape = SubResource( 1 )
 
 [node name="Pivot" type="Position2D" parent="."]
 
@@ -95,7 +104,56 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Footsteps" type="Node" parent="Audio"]
+
+[node name="Footsteps1" type="AudioStreamPlayer" parent="Audio/Footsteps"]
+stream = ExtResource( 21 )
+volume_db = -12.0
+pitch_scale = 0.9
+
+[node name="Footsteps2" type="AudioStreamPlayer" parent="Audio/Footsteps"]
+stream = ExtResource( 22 )
+volume_db = -12.0
+pitch_scale = 0.9
+
+[node name="Footsteps3" type="AudioStreamPlayer" parent="Audio/Footsteps"]
+stream = ExtResource( 18 )
+volume_db = -12.0
+pitch_scale = 0.9
+
+[node name="Footsteps4" type="AudioStreamPlayer" parent="Audio/Footsteps"]
+stream = ExtResource( 19 )
+volume_db = -12.0
+pitch_scale = 0.9
+
+[node name="Footsteps5" type="AudioStreamPlayer" parent="Audio/Footsteps"]
+stream = ExtResource( 4 )
+volume_db = -12.0
+pitch_scale = 0.9
+
+[node name="Footsteps6" type="AudioStreamPlayer" parent="Audio/Footsteps"]
+stream = ExtResource( 14 )
+volume_db = -12.0
+pitch_scale = 0.9
+
+[node name="Landing" type="Node" parent="Audio"]
+
+[node name="Landing1" type="AudioStreamPlayer" parent="Audio/Landing"]
+stream = ExtResource( 5 )
+volume_db = -16.0
+
+[node name="Landing2" type="AudioStreamPlayer" parent="Audio/Landing"]
+stream = ExtResource( 17 )
+volume_db = -16.0
+
+[node name="Landing3" type="AudioStreamPlayer" parent="Audio/Landing"]
+stream = ExtResource( 20 )
+volume_db = -16.0
 [connection signal="state_changed" from="." to="Debug/StateLabel" method="_on_Character_state_changed"]
+[connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Attacking" method="_on_Sprite_animation_finished"]
 [connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Dead" method="_on_Sprite_animation_finished"]
 [connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Hurt" method="_on_Sprite_animation_finished"]
-[connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Attacking" method="_on_Sprite_animation_finished"]
+[connection signal="frame_changed" from="Pivot/Sprite" to="StateMachine/Moving" method="_on_Sprite_frame_changed"]

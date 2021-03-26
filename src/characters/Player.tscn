@@ -17,8 +17,8 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="Pivot" index="0"]
 frames = ExtResource( 6 )
-animation = "falling"
-frame = 0
+animation = "moving"
+frame = 2
 
 [node name="Scope" type="RayCast2D" parent="Pivot" index="1"]
 position = Vector2( 7, 20 )
@@ -53,7 +53,7 @@ script = ExtResource( 9 )
 script = ExtResource( 3 )
 
 [node name="Moving" parent="StateMachine" index="2"]
-speed = 150
+speed = 75
 
 [node name="UI" parent="." index="4"]
 layer = 100
@@ -79,4 +79,28 @@ margin_left = -97.8241
 margin_top = -69.8831
 margin_right = 102.176
 margin_bottom = -51.8831
+
+[node name="Footsteps1" parent="Audio/Footsteps" index="0"]
+volume_db = -4.0
+pitch_scale = 0.9
+
+[node name="Footsteps2" parent="Audio/Footsteps" index="1"]
+volume_db = -4.0
+pitch_scale = 0.9
+
+[node name="Footsteps3" parent="Audio/Footsteps" index="2"]
+volume_db = -4.0
+pitch_scale = 0.9
+
+[node name="Footsteps4" parent="Audio/Footsteps" index="3"]
+volume_db = -4.0
+pitch_scale = 0.9
+
+[node name="Footsteps5" parent="Audio/Footsteps" index="4"]
+volume_db = -4.0
+pitch_scale = 0.9
+
+[node name="Footsteps6" parent="Audio/Footsteps" index="5"]
+volume_db = -4.0
+pitch_scale = 0.9
 [connection signal="attack_launched" from="StateMachine/Attacking" to="Pivot/Scope" method="_on_Attacking_attack_launched"]

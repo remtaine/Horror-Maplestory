@@ -25,3 +25,8 @@ func run(input):
 func enter() -> void:
 	owner.sprite.play("moving")
 	owner.velocity.y = 0
+
+
+func _on_Sprite_frame_changed() -> void:
+	if owner.sprite != null and owner.sprite.animation == "moving" and (owner.sprite.frame == 1 or owner.sprite.frame == 4):
+		owner.play_sound("moving")
