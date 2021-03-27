@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rifler.png-ea5d2dcdff971dcb6cf1d3a447e9962a.stex"
+path="res://.import/rifler.png-080dc9eba6ec30fea2b4a4e0bf2d7d2e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/hero rifle/rifler.png"
-dest_files=[ "res://.import/rifler.png-ea5d2dcdff971dcb6cf1d3a447e9962a.stex" ]
+source_file="res://assets/images/hero rifle/old/rifler.png"
+dest_files=[ "res://.import/rifler.png-080dc9eba6ec30fea2b4a4e0bf2d7d2e.stex" ]
 
 [params]
 

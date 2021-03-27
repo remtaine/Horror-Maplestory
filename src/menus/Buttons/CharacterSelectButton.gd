@@ -18,7 +18,7 @@ func _on_Character_focus_entered() -> void: #focus
 
 func _on_Character_focus_exited() -> void: #unfocus
 	character_name.text = default_name
-
+	$Audio/Selected.play()
 
 func _on_Character_mouse_entered() -> void: #hover
 	pass # Replace with function body.

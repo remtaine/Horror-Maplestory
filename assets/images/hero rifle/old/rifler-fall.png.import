@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rifler-dmg-ko.png-61525276f9b2f9186f9fde79b1a76ff5.stex"
+path="res://.import/rifler-fall.png-293b53d511b66671b5a59455265a0b9a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/hero rifle/rifler-dmg-ko.png"
-dest_files=[ "res://.import/rifler-dmg-ko.png-61525276f9b2f9186f9fde79b1a76ff5.stex" ]
+source_file="res://assets/images/hero rifle/old/rifler-fall.png"
+dest_files=[ "res://.import/rifler-fall.png-293b53d511b66671b5a59455265a0b9a.stex" ]
 
 [params]
 

@@ -21,3 +21,12 @@ margin_top = -19.8693
 margin_bottom = -1.86933
 
 [node name="Line2D" type="Line2D" parent="." index="6"]
+
+[node name="Landing1" parent="Audio/Landing" index="0"]
+volume_db = -80.0
+
+[node name="Landing2" parent="Audio/Landing" index="1"]
+volume_db = -80.0
+
+[node name="Landing3" parent="Audio/Landing" index="2"]
+volume_db = -80.0

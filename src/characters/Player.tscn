@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://src/addons/Scope.gd" type="Script" id=8]
 [ext_resource path="res://src/debug/ScopeVisualizer.gd" type="Script" id=9]
 [ext_resource path="res://assets/images/hero archer/archer-idle.png" type="Texture" id=10]
+[ext_resource path="res://resources/spritesheets/HPWalkieTalkieSpritesheet.tres" type="SpriteFrames" id=11]
+[ext_resource path="res://assets/images/objects/radio-l.png" type="Texture" id=12]
+[ext_resource path="res://src/UI/HPWalkieTalkie.gd" type="Script" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.95538, 22.8195 )
@@ -67,6 +70,7 @@ speed = 75
 layer = 100
 
 [node name="HPBar" type="TextureProgress" parent="UI/UIPivot" index="0"]
+visible = false
 margin_left = 66.7365
 margin_top = 38.5149
 margin_right = 67.7365
@@ -88,6 +92,42 @@ scale = Vector2( 0.00333333, 0.05 )
 texture = ExtResource( 10 )
 region_enabled = true
 region_rect = Rect2( 8.25938, 16.174, 89.0857, 63.5161 )
+
+[node name="WalkieTalkieControl" type="Control" parent="UI/UIPivot" index="1"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 66.7365
+margin_top = -96.1018
+margin_right = 106.737
+margin_bottom = -56.1018
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPWalkieTalkie" type="AnimatedSprite" parent="UI/UIPivot/WalkieTalkieControl" index="0"]
+scale = Vector2( 1.5, 1.5 )
+frames = ExtResource( 11 )
+animation = "4"
+script = ExtResource( 17 )
+
+[node name="RadioProgress" type="TextureProgress" parent="UI/UIPivot" index="2"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -109.955
+margin_top = -124.62
+margin_right = -49.9554
+margin_bottom = -64.6198
+rect_scale = Vector2( 1.5, 1.5 )
+value = 80.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 12 )
+fill_mode = 3
+tint_progress = Color( 0.882353, 0.321569, 0.321569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StateLabel" parent="Debug" index="0"]
 margin_left = -97.8241
@@ -117,3 +157,4 @@ volume_db = -4.0
 current = true
 limit_bottom = 575
 [connection signal="attack_launched" from="StateMachine/Attacking" to="Pivot/Scope" method="_on_Attacking_attack_launched"]
+[connection signal="attribute_changed" from="Attributes/Health" to="UI/UIPivot/WalkieTalkieControl/HPWalkieTalkie" method="_on_Health_attribute_changed"]

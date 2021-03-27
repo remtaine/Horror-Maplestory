@@ -36,12 +36,12 @@ shader_param/SMOOTH_STEP = 0.2
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 18 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 27
+[sub_resource type="DynamicFont" id=6]
+size = 18
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 27
+size = 18
 font_data = ExtResource( 5 )
 
 [node name="Level" type="Node"]
@@ -338,10 +338,10 @@ position = Vector2( 500, 100 )
 [node name="Characters" type="Node" parent="."]
 
 [node name="Jackalope1" parent="Characters" instance=ExtResource( 10 )]
-position = Vector2( -67.4482, -2.29938 )
+position = Vector2( -67.4482, 397.285 )
 
 [node name="Jackalope2" parent="Characters" instance=ExtResource( 10 )]
-position = Vector2( 1189.39, 138.652 )
+position = Vector2( 1189.39, 398.126 )
 
 [node name="StagBeetle" parent="Characters" instance=ExtResource( 17 )]
 position = Vector2( -369.112, 305.634 )
@@ -423,8 +423,9 @@ __meta__ = {
 }
 
 [node name="Darkness" type="ColorRect" parent="PostProcessing"]
-self_modulate = Color( 1, 1, 1, 0.0823529 )
-anchor_right = 1.0
+self_modulate = Color( 0.054902, 0.0313726, 0.180392, 0.117647 )
+anchor_left = -0.00165532
+anchor_right = 0.998344
 anchor_bottom = 1.0
 margin_left = -1719.38
 margin_top = -605.351
@@ -478,11 +479,11 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -503.963
-margin_top = -39.9999
-margin_right = -3.96295
-margin_bottom = -12.9999
-custom_fonts/font = SubResource( 4 )
+margin_left = -502.969
+margin_top = -40.9936
+margin_right = -2.9693
+margin_bottom = -13.9935
+custom_fonts/font = SubResource( 6 )
 text = "FPS: 60"
 align = 2
 valign = 2
@@ -492,7 +493,9 @@ __meta__ = {
 }
 
 [node name="Instructions" type="Label" parent="CanvasLayer/Debug"]
+anchor_left = -0.00143315
 anchor_top = 1.0
+anchor_right = -0.00143312
 anchor_bottom = 1.0
 margin_left = 8.40461
 margin_top = -47.9356

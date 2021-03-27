@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/fonts/ChevyRay - Softsquare.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/menus/Buttons/MainMenuButton.tscn" type="PackedScene" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://assets/audio/UI/UI_Change_of_set.wav" type="AudioStream" id=8]
 [ext_resource path="res://src/menus/MenuAudio.gd" type="Script" id=9]
 [ext_resource path="res://src/menus/MainMenu.gd" type="Script" id=10]
-[ext_resource path="res://assets/images/team/team nebelstern sy.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/team/team avatar nebelstern.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/team/team avatar janusz.jpeg" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 90
@@ -245,9 +246,9 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel"]
-margin_left = 59.9891
+margin_left = 48.6119
 margin_top = 85.8464
-margin_right = 787.989
+margin_right = 818.612
 margin_bottom = 415.846
 rect_scale = Vector2( 0.7, 0.7 )
 custom_constants/vseparation = 30
@@ -258,8 +259,9 @@ __meta__ = {
 }
 
 [node name="Remtaine" type="HBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer"]
-margin_right = 313.0
+margin_right = 334.0
 margin_bottom = 150.0
+custom_constants/separation = 25
 
 [node name="Avatar" type="TextureRect" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Remtaine"]
 margin_right = 150.0
@@ -269,8 +271,8 @@ texture = ExtResource( 6 )
 expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Remtaine"]
-margin_left = 154.0
-margin_right = 313.0
+margin_left = 175.0
+margin_right = 334.0
 margin_bottom = 150.0
 alignment = 1
 __meta__ = {
@@ -292,6 +294,7 @@ __meta__ = {
 margin_top = 77.0
 margin_right = 159.0
 margin_bottom = 104.0
+rect_pivot_offset = Vector2( -1810.2, 363.685 )
 custom_fonts/font = ExtResource( 5 )
 text = "Programmer"
 align = 1
@@ -300,9 +303,10 @@ __meta__ = {
 }
 
 [node name="Nebelstern" type="HBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer"]
-margin_left = 433.0
-margin_right = 728.0
+margin_left = 454.0
+margin_right = 770.0
 margin_bottom = 150.0
+custom_constants/separation = 25
 
 [node name="Avatar" type="TextureRect" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Nebelstern"]
 margin_right = 150.0
@@ -312,8 +316,8 @@ texture = ExtResource( 11 )
 expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Nebelstern"]
-margin_left = 154.0
-margin_right = 295.0
+margin_left = 175.0
+margin_right = 316.0
 margin_bottom = 150.0
 alignment = 1
 __meta__ = {
@@ -344,19 +348,20 @@ __meta__ = {
 
 [node name="Janusz" type="HBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer"]
 margin_top = 180.0
-margin_right = 313.0
+margin_right = 334.0
 margin_bottom = 330.0
+custom_constants/separation = 25
 
 [node name="Avatar" type="TextureRect" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Janusz"]
 margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
-texture = ExtResource( 6 )
+texture = ExtResource( 12 )
 expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Janusz"]
-margin_left = 154.0
-margin_right = 292.0
+margin_left = 175.0
+margin_right = 313.0
 margin_bottom = 150.0
 alignment = 1
 __meta__ = {
@@ -386,10 +391,11 @@ __meta__ = {
 }
 
 [node name="Apmus" type="HBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer"]
-margin_left = 433.0
+margin_left = 454.0
 margin_top = 180.0
-margin_right = 728.0
+margin_right = 770.0
 margin_bottom = 330.0
+custom_constants/separation = 25
 
 [node name="Avatar" type="TextureRect" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Apmus"]
 margin_right = 150.0
@@ -399,8 +405,8 @@ texture = ExtResource( 6 )
 expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Apmus"]
-margin_left = 154.0
-margin_right = 280.0
+margin_left = 175.0
+margin_right = 301.0
 margin_bottom = 150.0
 alignment = 1
 __meta__ = {

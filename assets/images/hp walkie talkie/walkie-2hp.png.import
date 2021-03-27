@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/team nebelstern sy.png-70350f647ebc590b97cfa8a26ca12b69.stex"
+path="res://.import/walkie-2hp.png-51d0220d002b03ffc50a590e29a66bdf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/team/team nebelstern sy.png"
-dest_files=[ "res://.import/team nebelstern sy.png-70350f647ebc590b97cfa8a26ca12b69.stex" ]
+source_file="res://assets/images/hp walkie talkie/walkie-2hp.png"
+dest_files=[ "res://.import/walkie-2hp.png-51d0220d002b03ffc50a590e29a66bdf.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

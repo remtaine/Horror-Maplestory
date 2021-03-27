@@ -4,9 +4,10 @@
 [ext_resource path="res://src/menus/Buttons/CharacterSelectButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/menus/CharacterHolder.gd" type="Script" id=3]
 [ext_resource path="res://src/menus/Buttons/MainMenuButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/images/hero rifle/rifler.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/hero rifle/old/rifler.png" type="Texture" id=5]
 [ext_resource path="res://assets/audio/themes/Base Ambience.ogg" type="AudioStream" id=6]
-[ext_resource path="res://assets/images/hero rifle/rifler-fall.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/hero rifle/old/rifler-fall.png" type="Texture" id=7]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 90
