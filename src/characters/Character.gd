@@ -54,7 +54,10 @@ func play_sound(audio : String) -> void:
 			sound_holder = $Audio/Footsteps
 		"landing":
 			sound_holder = $Audio/Landing
+		"attacking":
+			sound_holder = $Audio/Attacking
 	sound_holder.get_child(randi() % sound_holder.get_child_count()).play()
+
 
 func take_damage(value : int) -> void:
 	hp.take_damage(value)

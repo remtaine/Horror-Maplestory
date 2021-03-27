@@ -16,7 +16,7 @@ func take_damage(v : int) -> void:
 	if v == 0:
 		return
 		
-	value = clamp(value - v, 0, max_value)
+	value = int(clamp(value - v, 0, max_value))
 	print_debug(value)
 	if value <= 0:
 #		emit_signal("attribute_depleted", self)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://resources/spritesheets/JackalopeSpritesheet.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://src/states/Dead.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/audio/landing/Player_Land-003.wav" type="AudioStream" id=20]
 [ext_resource path="res://assets/audio/footsteps/Player_FS-001.wav" type="AudioStream" id=21]
 [ext_resource path="res://assets/audio/footsteps/Player_FS-002.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/audio/archer attack/Player_Bow_Shoot.wav" type="AudioStream" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 44.6665, 22.8195 )
@@ -139,6 +140,11 @@ stream = ExtResource( 14 )
 volume_db = -12.0
 pitch_scale = 0.9
 
+[node name="Attacking" type="Node" parent="Audio"]
+
+[node name="Attack1" type="AudioStreamPlayer" parent="Audio/Attacking"]
+stream = ExtResource( 23 )
+
 [node name="Landing" type="Node" parent="Audio"]
 
 [node name="Landing1" type="AudioStreamPlayer" parent="Audio/Landing"]
@@ -153,7 +159,7 @@ volume_db = -16.0
 stream = ExtResource( 20 )
 volume_db = -16.0
 [connection signal="state_changed" from="." to="Debug/StateLabel" method="_on_Character_state_changed"]
-[connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Dead" method="_on_Sprite_animation_finished"]
 [connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Attacking" method="_on_Sprite_animation_finished"]
+[connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Dead" method="_on_Sprite_animation_finished"]
 [connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Hurt" method="_on_Sprite_animation_finished"]
 [connection signal="frame_changed" from="Pivot/Sprite" to="StateMachine/Moving" method="_on_Sprite_frame_changed"]

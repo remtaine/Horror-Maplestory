@@ -9,7 +9,7 @@
 [ext_resource path="res://src/debug/DebugHolder.gd" type="Script" id=7]
 [ext_resource path="res://src/addons/Scope.gd" type="Script" id=8]
 [ext_resource path="res://src/debug/ScopeVisualizer.gd" type="Script" id=9]
-[ext_resource path="res://assets/images/archer/archer-idle.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/hero archer/archer-idle.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.95538, 22.8195 )
@@ -26,7 +26,7 @@ shape = SubResource( 1 )
 [node name="Sprite" parent="Pivot" index="0"]
 frames = ExtResource( 6 )
 animation = "moving"
-frame = 2
+frame = 0
 
 [node name="Scope" type="RayCast2D" parent="Pivot" index="1"]
 position = Vector2( 7, 20 )
@@ -76,7 +76,7 @@ value = 100.0
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 4 )
 tint_under = Color( 0.992157, 0.172549, 0.172549, 1 )
-tint_progress = Color( 0.105882, 0.984314, 0.407843, 1 )
+tint_progress = Color( 0.313726, 0.396078, 0.109804, 1 )
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -91,9 +91,9 @@ region_rect = Rect2( 8.25938, 16.174, 89.0857, 63.5161 )
 
 [node name="StateLabel" parent="Debug" index="0"]
 margin_left = -97.8241
-margin_top = -69.8831
+margin_top = -78.1306
 margin_right = 102.176
-margin_bottom = -51.8831
+margin_bottom = -42.1306
 
 [node name="Footsteps1" parent="Audio/Footsteps" index="0"]
 volume_db = -4.0
@@ -112,4 +112,8 @@ volume_db = -4.0
 
 [node name="Footsteps6" parent="Audio/Footsteps" index="5"]
 volume_db = -4.0
+
+[node name="Camera2D" type="Camera2D" parent="." index="7"]
+current = true
+limit_bottom = 575
 [connection signal="attack_launched" from="StateMachine/Attacking" to="Pivot/Scope" method="_on_Attacking_attack_launched"]

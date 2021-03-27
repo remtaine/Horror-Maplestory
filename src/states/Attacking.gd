@@ -8,6 +8,7 @@ func _ready():
 
 
 func enter() -> void:
+	owner.play_sound("attacking")
 	owner.sprite.play("attacking")
 	emit_signal("attack_launched")
 	
