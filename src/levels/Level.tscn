@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
+[ext_resource path="res://src/objects/Supplies.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/levels/Level.gd" type="Script" id=2]
 [ext_resource path="res://resources/tilesets/Ground.tres" type="TileSet" id=3]
 [ext_resource path="res://src/debug/DebugHolder.gd" type="Script" id=4]
@@ -11,6 +12,7 @@
 [ext_resource path="res://src/characters/Jackalope.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/audio/themes/Base Ambience.ogg" type="AudioStream" id=11]
 [ext_resource path="res://assets/images/backgrounds/far backgrounds/swamp-bg1.png" type="Texture" id=12]
+[ext_resource path="res://src/characters/Character.gd" type="Script" id=13]
 [ext_resource path="res://assets/images/backgrounds/treeline2-lc.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/backgrounds/black treeline without eye.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/backgrounds/black treeline with eye.png" type="Texture" id=16]
@@ -36,7 +38,7 @@ shader_param/SMOOTH_STEP = 0.2
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 18 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=4]
 size = 18
 font_data = ExtResource( 5 )
 
@@ -335,19 +337,50 @@ region_rect = Rect2( 129.72, 982.333, 70.9042, 72.46 )
 [node name="PlayerSpawnPoint" type="Position2D" parent="."]
 position = Vector2( 500, 100 )
 
+[node name="Objects" type="Node" parent="."]
+
+[node name="Supplies1" parent="Objects" instance=ExtResource( 1 )]
+position = Vector2( 0, 397.285 )
+
+[node name="Supplies2" parent="Objects" instance=ExtResource( 1 )]
+position = Vector2( 821.561, 398.126 )
+
+[node name="Supplies3" parent="Objects" instance=ExtResource( 1 )]
+position = Vector2( 257.157, 405.257 )
+
+[node name="Supplies4" parent="Objects" instance=ExtResource( 1 )]
+position = Vector2( 1133.57, 398.126 )
+
+[node name="Supplies5" parent="Objects" instance=ExtResource( 1 )]
+position = Vector2( -309.112, 404.416 )
+
 [node name="Characters" type="Node" parent="."]
 
-[node name="Jackalope1" parent="Characters" instance=ExtResource( 10 )]
-position = Vector2( -67.4482, 397.285 )
+[node name="Enemies" type="Node" parent="Characters"]
 
-[node name="Jackalope2" parent="Characters" instance=ExtResource( 10 )]
-position = Vector2( 1189.39, 398.126 )
-
-[node name="StagBeetle" parent="Characters" instance=ExtResource( 17 )]
+[node name="StagBeetle" parent="Characters/Enemies" groups=[
+"character",
+] instance=ExtResource( 17 )]
 position = Vector2( -369.112, 305.634 )
+script = ExtResource( 13 )
 
-[node name="StagBeetle2" parent="Characters" instance=ExtResource( 17 )]
+[node name="StagBeetle2" parent="Characters/Enemies" groups=[
+"character",
+] instance=ExtResource( 17 )]
 position = Vector2( 1467.04, 338.548 )
+script = ExtResource( 13 )
+
+[node name="Jackalope" parent="Characters/Enemies" groups=[
+"character",
+] instance=ExtResource( 10 )]
+position = Vector2( 957.031, 269.279 )
+script = ExtResource( 13 )
+
+[node name="Jackalope2" parent="Characters/Enemies" groups=[
+"character",
+] instance=ExtResource( 10 )]
+position = Vector2( 161.968, 305.634 )
+script = ExtResource( 13 )
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 0
@@ -483,7 +516,7 @@ margin_left = -502.969
 margin_top = -40.9936
 margin_right = -2.9693
 margin_bottom = -13.9935
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "FPS: 60"
 align = 2
 valign = 2
@@ -513,3 +546,7 @@ __meta__ = {
 [node name="Theme" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 11 )
 autoplay = true
+[connection signal="state_changed" from="Characters/Enemies/StagBeetle" to="Characters/Enemies/StagBeetle/Debug/StateLabel" method="_on_Character_state_changed"]
+[connection signal="state_changed" from="Characters/Enemies/StagBeetle2" to="Characters/Enemies/StagBeetle2/Debug/StateLabel" method="_on_Character_state_changed"]
+[connection signal="state_changed" from="Characters/Enemies/Jackalope" to="Characters/Enemies/Jackalope/Debug/StateLabel" method="_on_Character_state_changed"]
+[connection signal="state_changed" from="Characters/Enemies/Jackalope2" to="Characters/Enemies/Jackalope2/Debug/StateLabel" method="_on_Character_state_changed"]

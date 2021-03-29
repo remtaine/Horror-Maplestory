@@ -6,8 +6,14 @@ func _ready():
 
 
 func enter() -> void:
-	owner.sprite.play("hurt")
+	if owner.sprite.animation != "hurt":
+		owner.sprite.play("hurt")
+		$AnimationPlayer.play("blink")
 #	emit_signal("attack_launched")
+	
+
+func exit() -> void:
+	$AnimationPlayer.play("setup")
 	
 	
 func run(inputs):
@@ -15,6 +21,10 @@ func run(inputs):
 	.run(inputs)
 
 
-func _on_Sprite_animation_finished() -> void:
-	if owner.sprite.animation == "hurt":
-		owner.change_state("idle")
+#func _on_Sprite_animation_finished() -> void:
+#	if owner.sprite.animation == "hurt":
+		
+
+
+func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
+	owner.change_state("idle")

@@ -14,8 +14,10 @@ func _ready() -> void:
 	state_name = "dead"
 
 func enter():
-	owner.sprite.play("dead")
-
+	if owner.sprite.animation != "dead":
+		owner.sprite.play("dead")
+#	owner.speed = 0
+	owner.velocity = Vector2.ZERO
 
 func _on_Sprite_animation_finished() -> void:
 #	print(owner.sprite.animation)

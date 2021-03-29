@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=2]
@@ -12,12 +12,62 @@
 [ext_resource path="res://assets/images/hero archer/archer-idle.png" type="Texture" id=10]
 [ext_resource path="res://resources/spritesheets/HPWalkieTalkieSpritesheet.tres" type="SpriteFrames" id=11]
 [ext_resource path="res://assets/images/objects/radio-l.png" type="Texture" id=12]
+[ext_resource path="res://src/addons/Screenshake.gd" type="Script" id=13]
+[ext_resource path="res://assets/images/stamina bar/stamina100.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/stamina bar/stamina-0.png" type="Texture" id=15]
+[ext_resource path="res://src/addons/StaminaBar.gd" type="Script" id=16]
 [ext_resource path="res://src/UI/HPWalkieTalkie.gd" type="Script" id=17]
+[ext_resource path="res://assets/audio/UI/UI_Select.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/fonts/ChevyRay - Softsquare.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://src/characters/PlayerDead.gd" type="Script" id=20]
+[ext_resource path="res://src/UI/PlayerUIPivot.gd" type="Script" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.95538, 22.8195 )
 
-[node name="Player" instance=ExtResource( 1 )]
+[sub_resource type="Animation" id=2]
+resource_name = "blink"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.392157, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.392157, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "setup"
+length = 0.001
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 18
+font_data = ExtResource( 19 )
+
+[node name="Player" groups=[
+"player",
+] instance=ExtResource( 1 )]
 collision_layer = 2
 collision_mask = 17
 script = ExtResource( 2 )
@@ -28,10 +78,8 @@ shape = SubResource( 1 )
 
 [node name="Sprite" parent="Pivot" index="0"]
 frames = ExtResource( 6 )
-animation = "moving"
-frame = 0
 
-[node name="Scope" type="RayCast2D" parent="Pivot" index="1"]
+[node name="Scope" type="RayCast2D" parent="Pivot/Hitbox" index="0"]
 position = Vector2( 7, 20 )
 enabled = true
 cast_to = Vector2( 500, 0 )
@@ -39,7 +87,7 @@ collision_mask = 4
 collide_with_areas = true
 script = ExtResource( 8 )
 
-[node name="Debug" type="Control" parent="Pivot/Scope" index="0" groups=[
+[node name="Debug" type="Control" parent="Pivot/Hitbox/Scope" index="0" groups=[
 "debug",
 ]]
 anchor_right = 1.0
@@ -53,7 +101,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScopeVisualizer" type="Line2D" parent="Pivot/Scope/Debug" index="0"]
+[node name="ScopeVisualizer" type="Line2D" parent="Pivot/Hitbox/Scope/Debug" index="0"]
 visible = false
 position = Vector2( 7, 20 )
 points = PoolVector2Array( 0, 0, 500, 0 )
@@ -66,8 +114,22 @@ script = ExtResource( 3 )
 [node name="Moving" parent="StateMachine" index="2"]
 speed = 75
 
+[node name="RunCD" type="Timer" parent="StateMachine/Moving" index="1"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Attacking" parent="StateMachine" index="4"]
+start_damage_frame = 4
+end_damage_frame = 5
+
+[node name="Dead" parent="StateMachine" index="5"]
+script = ExtResource( 20 )
+
 [node name="UI" parent="." index="4"]
 layer = 100
+
+[node name="UIPivot" parent="UI" index="0"]
+script = ExtResource( 21 )
 
 [node name="HPBar" type="TextureProgress" parent="UI/UIPivot" index="0"]
 visible = false
@@ -110,17 +172,51 @@ frames = ExtResource( 11 )
 animation = "4"
 script = ExtResource( 17 )
 
-[node name="RadioProgress" type="TextureProgress" parent="UI/UIPivot" index="2"]
+[node name="StaminaBar" type="TextureProgress" parent="UI/UIPivot" index="2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -70.636
+margin_right = 80.0
+margin_bottom = -40.636
+rect_pivot_offset = Vector2( 80, 0 )
+max_value = 200.0
+value = 200.0
+texture_under = ExtResource( 14 )
+texture_over = ExtResource( 15 )
+texture_progress = ExtResource( 14 )
+fill_mode = 6
+tint_under = Color( 0, 0, 0, 1 )
+tint_progress = Color( 0.752941, 0.643137, 0.12549, 1 )
+stretch_margin_left = 100
+stretch_margin_top = 100
+stretch_margin_right = 100
+stretch_margin_bottom = 100
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DisappearTimer" type="Timer" parent="UI/UIPivot/StaminaBar" index="0"]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/UIPivot/StaminaBar" index="1"]
+autoplay = "setup"
+anims/blink = SubResource( 2 )
+anims/setup = SubResource( 3 )
+
+[node name="RadioProgress" type="TextureProgress" parent="UI/UIPivot" index="3"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -109.955
+margin_left = -116.93
 margin_top = -124.62
-margin_right = -49.9554
+margin_right = -56.93
 margin_bottom = -64.6198
 rect_scale = Vector2( 1.5, 1.5 )
-value = 80.0
 texture_under = ExtResource( 12 )
 texture_progress = ExtResource( 12 )
 fill_mode = 3
@@ -128,6 +224,20 @@ tint_progress = Color( 0.882353, 0.321569, 0.321569, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextProgress" type="Label" parent="UI/UIPivot/RadioProgress" index="0"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.895
+margin_top = -10.435
+margin_right = 14.105
+margin_bottom = 7.56503
+custom_fonts/font = SubResource( 4 )
+text = "0%"
+align = 2
+valign = 2
 
 [node name="StateLabel" parent="Debug" index="0"]
 margin_left = -97.8241
@@ -153,8 +263,30 @@ volume_db = -4.0
 [node name="Footsteps6" parent="Audio/Footsteps" index="5"]
 volume_db = -4.0
 
+[node name="PickUp" type="Node" parent="Audio" index="3"]
+
+[node name="PickUp1" type="AudioStreamPlayer" parent="Audio/PickUp" index="0"]
+stream = ExtResource( 18 )
+
 [node name="Camera2D" type="Camera2D" parent="." index="7"]
 current = true
 limit_bottom = 575
-[connection signal="attack_launched" from="StateMachine/Attacking" to="Pivot/Scope" method="_on_Attacking_attack_launched"]
+
+[node name="Screenshake" type="Node2D" parent="Camera2D" index="0"]
+script = ExtResource( 13 )
+
+[node name="Tween" type="Tween" parent="Camera2D/Screenshake" index="0"]
+
+[node name="FrequencyTimer" type="Timer" parent="Camera2D/Screenshake" index="1"]
+
+[node name="DurationTimer" type="Timer" parent="Camera2D/Screenshake" index="2"]
+[connection signal="run_ended" from="StateMachine/Moving" to="UI/UIPivot/StaminaBar" method="_on_Moving_run_ended"]
+[connection signal="run_started" from="StateMachine/Moving" to="UI/UIPivot/StaminaBar" method="_on_Moving_run_started"]
+[connection signal="timeout" from="StateMachine/Moving/RunCD" to="UI/UIPivot/StaminaBar" method="_on_RunCD_timeout"]
+[connection signal="attack_launched" from="StateMachine/Attacking" to="Pivot/Hitbox/Scope" method="_on_Attacking_attack_launched"]
+[connection signal="animation_started" from="StateMachine/Hurt/AnimationPlayer" to="Camera2D/Screenshake" method="_on_AnimationPlayer_animation_started"]
 [connection signal="attribute_changed" from="Attributes/Health" to="UI/UIPivot/WalkieTalkieControl/HPWalkieTalkie" method="_on_Health_attribute_changed"]
+[connection signal="is_dead" from="Attributes/Health" to="Camera2D/Screenshake" method="_on_Health_is_dead"]
+[connection signal="is_dead" from="Attributes/Health" to="UI/UIPivot" method="_on_Health_is_dead"]
+[connection signal="stamina_empty" from="UI/UIPivot/StaminaBar" to="StateMachine/Moving" method="_on_StaminaBar_stamina_empty"]
+[connection signal="timeout" from="UI/UIPivot/StaminaBar/DisappearTimer" to="UI/UIPivot/StaminaBar" method="_on_DisappearTimer_timeout"]

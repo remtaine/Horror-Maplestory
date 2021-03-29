@@ -5,8 +5,19 @@
 
 [node name="Archer" instance=ExtResource( 1 )]
 
+[node name="Sprite" parent="Pivot" index="0"]
+frame = 6
+playing = true
+
+[node name="Dead" parent="StateMachine" index="5"]
+sprite_excess = 10
+
 [node name="Head" parent="UI/UIPivot/HPBar" index="0"]
 position = Vector2( 0.0117262, 0.627198 )
 scale = Vector2( 0.00500279, 0.0750419 )
 texture = ExtResource( 2 )
 region_enabled = false
+[connection signal="animation_started" from="StateMachine/Hurt/AnimationPlayer" to="Camera2D/Screenshake" method="_on_AnimationPlayer_animation_started"]
+[connection signal="attribute_changed" from="Attributes/Health" to="UI/UIPivot/WalkieTalkieControl/HPWalkieTalkie" method="_on_Health_attribute_changed"]
+[connection signal="is_dead" from="Attributes/Health" to="Camera2D/Screenshake" method="_on_Health_is_dead"]
+[connection signal="is_dead" from="Attributes/Health" to="UI/UIPivot" method="_on_Health_is_dead"]

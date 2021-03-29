@@ -6,7 +6,8 @@ func _ready():
 
 
 func enter() -> void:
-	owner.sprite.play("falling")
+	if owner.sprite.animation != "falling":
+		owner.sprite.play("falling")
 
 func exit() -> void:
 	owner.play_sound("landing")

@@ -67,7 +67,7 @@ margin_top = 44.7862
 margin_right = 480.0
 margin_bottom = 134.786
 custom_fonts/font = SubResource( 1 )
-text = "Horror MapleStory"
+text = "Camp of the Dead"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -173,9 +173,9 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="CanvasLayer/UIControl/PanelController/InstructionsPanel/VBoxContainer"]
-margin_top = 53.0
+margin_top = 28.0
 margin_right = 639.0
-margin_bottom = 164.0
+margin_bottom = 139.0
 custom_fonts/font = SubResource( 4 )
 text = "Instructions
 "
@@ -185,14 +185,15 @@ __meta__ = {
 }
 
 [node name="Instructions" type="Label" parent="CanvasLayer/UIControl/PanelController/InstructionsPanel/VBoxContainer"]
-margin_top = 168.0
+margin_top = 143.0
 margin_right = 639.0
-margin_bottom = 306.0
+margin_bottom = 332.0
 custom_fonts/font = SubResource( 5 )
 custom_constants/line_spacing = 15
 text = "WASD/ Arrow keys to move
 J to attack
-Space to jump"
+Space to jump
+Shift to run"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -435,15 +436,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Version" type="Label" parent="CanvasLayer/UIControl"]
-anchor_left = 1.0
+[node name="Version" type="Label" parent="CanvasLayer/UIControl/PanelController/CreditsPanel"]
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -50.8972
-margin_top = -21.809
-margin_right = -4.89722
-margin_bottom = -3.80896
+margin_left = -24.0
+margin_top = -28.316
+margin_right = 24.0
+margin_bottom = -10.316
 custom_fonts/font = SubResource( 6 )
 text = "v0.1.2"
 align = 2

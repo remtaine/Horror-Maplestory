@@ -22,3 +22,5 @@ scale = Vector2( 0.004, 0.065 )
 texture = ExtResource( 3 )
 region_enabled = false
 region_rect = Rect2( 8.25938, 16.174, 98.1098, 98.3303 )
+[connection signal="animation_started" from="StateMachine/Hurt/AnimationPlayer" to="Camera2D/Screenshake" method="_on_AnimationPlayer_animation_started"]
+[connection signal="is_dead" from="Attributes/Health" to="Camera2D/Screenshake" method="_on_Health_is_dead"]

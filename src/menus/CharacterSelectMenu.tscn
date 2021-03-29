@@ -8,7 +8,6 @@
 [ext_resource path="res://assets/audio/themes/Base Ambience.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/images/hero rifle/old/rifler-fall.png" type="Texture" id=7]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 90
 font_data = ExtResource( 1 )

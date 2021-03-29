@@ -23,7 +23,8 @@ func activate():
 			click_effect()
 			yield(get_tree().create_timer(1.0), "timeout")
 			if path != "":
-				var _status = get_tree().change_scene(path)
+#				var _status = get_tree().change_scene(path)
+				SceneChanger.change_scene(path)
 	elif button_use == "panel":
 		click_effect(false)
 		yield(get_tree().create_timer(1.0), "timeout")

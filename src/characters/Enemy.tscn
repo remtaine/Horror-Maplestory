@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/characters/Character.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/characters/EnemyStateMachine.gd" type="Script" id=2]
+[ext_resource path="res://src/states/Enemy/EnemyStateMachine.gd" type="Script" id=2]
+[ext_resource path="res://src/states/Enemy/EnemyIdle.gd" type="Script" id=3]
+[ext_resource path="res://src/states/Enemy/EnemyMoving.gd" type="Script" id=4]
+[ext_resource path="res://src/states/Enemy/EnemyChasing.gd" type="Script" id=5]
+[ext_resource path="res://src/addons/Hitbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/states/Enemy/EnemyDead.gd" type="Script" id=7]
 
 [node name="Enemy" groups=[
 "enemies",
@@ -9,9 +14,49 @@
 collision_layer = 4
 collision_mask = 9
 
+[node name="Sprite" parent="Pivot" index="0"]
+animation = "attacking"
+frame = 0
+
+[node name="Hitbox" parent="Pivot/Hitbox" index="0" instance=ExtResource( 6 )]
+position = Vector2( -48.6216, 47.2455 )
+
 [node name="StateMachine" parent="." index="2"]
 script = ExtResource( 2 )
 
+[node name="Idle" parent="StateMachine" index="0"]
+script = ExtResource( 3 )
+
+[node name="WaitTimer" type="Timer" parent="StateMachine/Idle" index="0"]
+one_shot = true
+
+[node name="Moving" parent="StateMachine" index="2"]
+script = ExtResource( 4 )
+speed = 80
+
+[node name="MoveTimer" type="Timer" parent="StateMachine/Moving" index="1"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Attacking" parent="StateMachine" index="4"]
+start_damage_frame = 2
+end_damage_frame = 5
+
+[node name="Timer" type="Timer" parent="StateMachine/Attacking" index="0"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Dead" parent="StateMachine" index="5"]
+script = ExtResource( 7 )
+
+[node name="Chasing" type="Node" parent="StateMachine" index="7"]
+script = ExtResource( 5 )
+speed = 160
+speed_multiplier = 2.0
+
 [node name="Health" parent="Attributes" index="0"]
-value = 1
-max_value = 1
+value = 3
+[connection signal="timeout" from="StateMachine/Idle/WaitTimer" to="StateMachine/Idle" method="_on_WaitTimer_timeout"]
+[connection signal="timeout" from="StateMachine/Moving/MoveTimer" to="StateMachine/Moving" method="_on_MoveTimer_timeout"]
+[connection signal="end_damage" from="StateMachine/Attacking" to="Pivot/Hitbox/Hitbox" method="_on_Attacking_end_damage"]
+[connection signal="start_damage" from="StateMachine/Attacking" to="Pivot/Hitbox/Hitbox" method="_on_Attacking_start_damage"]

@@ -7,7 +7,8 @@ func _ready():
 
 
 func enter() -> void:
-	owner.sprite.play("falling")
+	if owner.sprite.animation != "falling":
+		owner.sprite.play("falling")
 	owner.velocity.y = -JUMP_SPEED
 
 func run(inputs):

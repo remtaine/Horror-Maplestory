@@ -20,6 +20,8 @@ func interpret_inputs(input):
 	var state_name = owner.get_state().state_name
 	if state_name == "dead":
 		return "dead"
+	if state_name == "hurt":
+		return "hurt"
 	elif state_name == "attacking" or input.is_attacking:
 		return "attacking"
 		

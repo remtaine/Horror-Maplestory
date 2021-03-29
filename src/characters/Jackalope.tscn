@@ -12,9 +12,18 @@ position = Vector2( 6.96846, 33.9554 )
 shape = SubResource( 1 )
 
 [node name="Sprite" parent="Pivot" index="0"]
+position = Vector2( 17.8252, 0 )
+scale = Vector2( -1, 1 )
 animation = "hurt"
 frame = 1
 playing = true
+
+[node name="Hitbox" parent="Pivot/Hitbox" index="0"]
+position = Vector2( 25.3147, 58.2647 )
+scale = Vector2( 2.3388, 1.79276 )
+
+[node name="StateMachine" parent="." index="2"]
+attack_dist = 100
 
 [node name="StateLabel" parent="Debug" index="0"]
 margin_top = -19.8693

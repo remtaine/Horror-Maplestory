@@ -1,11 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/ChevyRay - Softsquare.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/menus/Buttons/MainMenuButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/images/hero archer/archer-idle.png" type="Texture" id=3]
+[ext_resource path="res://assets/audio/themes/Base Ambience.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/screens/ending-screen2-l.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 90
 font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 315.112, 19.9745, 83.3799, 120.109 )
 
 [node name="WinMenu" type="Control"]
 anchor_right = 1.0
@@ -14,7 +21,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 2, 2, 2, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Background" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.0745098 )
@@ -22,29 +40,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Title" type="Label" parent="."]
+visible = false
+margin_top = 189.0
+margin_right = 960.0
+margin_bottom = 279.0
+custom_fonts/font = SubResource( 1 )
+text = "You Won!"
+align = 1
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+margin_top = 475.487
+margin_right = 960.0
+margin_bottom = 517.487
+custom_constants/separation = 100
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="Background/VBoxContainer"]
-margin_top = 156.0
-margin_right = 960.0
-margin_bottom = 246.0
-custom_fonts/font = SubResource( 1 )
-text = "You Won!"
-align = 1
-
-[node name="Buttons" type="VBoxContainer" parent="Background/VBoxContainer"]
-margin_top = 250.0
-margin_right = 960.0
-margin_bottom = 384.0
-
-[node name="Restart" parent="Background/VBoxContainer/Buttons" instance=ExtResource( 2 )]
-margin_right = 960.0
+[node name="Restart" parent="Buttons" instance=ExtResource( 2 )]
+margin_left = 64.0
+margin_right = 212.0
 focus_neighbour_left = NodePath("../MainMenu")
 focus_neighbour_top = NodePath("../MainMenu")
 focus_neighbour_right = NodePath("../CharacterSelect")
@@ -52,21 +69,42 @@ text = "Restart"
 path = "res://src/levels/Level.tscn"
 autofocus = true
 
-[node name="CharacterSelect" parent="Background/VBoxContainer/Buttons" instance=ExtResource( 2 )]
-margin_top = 46.0
-margin_right = 960.0
-margin_bottom = 88.0
+[node name="CharacterSelect" parent="Buttons" instance=ExtResource( 2 )]
+margin_left = 312.0
+margin_right = 616.0
 focus_neighbour_left = NodePath("../Restart")
 focus_neighbour_right = NodePath("../MainMenu")
 text = "Character Select"
 path = "res://src/menus/CharacterSelectMenu.tscn"
 
-[node name="MainMenu" parent="Background/VBoxContainer/Buttons" instance=ExtResource( 2 )]
-margin_top = 92.0
-margin_right = 960.0
-margin_bottom = 134.0
+[node name="MainMenu" parent="Buttons" instance=ExtResource( 2 )]
+margin_left = 716.0
+margin_right = 896.0
 focus_neighbour_left = NodePath("../CharacterSelect")
 focus_neighbour_right = NodePath("../Restart")
 focus_neighbour_bottom = NodePath("../Restart")
 text = "Main Menu"
 path = "res://src/menus/MainMenu.tscn"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 30
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="TextureRect" parent="VBoxContainer"]
+visible = false
+margin_top = 188.0
+margin_right = 960.0
+margin_bottom = 308.0
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Theme" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 4 )
+autoplay = true

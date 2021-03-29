@@ -33,4 +33,5 @@ func _on_Flasher_pressed() -> void:
 	enter_game()
 
 func enter_game():
-	var _error = get_tree().change_scene(path)
+	SceneChanger.change_scene(path)
+#	var _error = get_tree().change_scene(path)

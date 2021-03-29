@@ -6,7 +6,8 @@ func _ready():
 
 
 func enter() -> void:
-	owner.sprite.play("idle")
+	if owner.sprite.animation != "idle":
+		owner.sprite.play("idle")
 	
 func run(inputs):
 	owner.velocity.x = lerp(owner.velocity.x, 0, 0.3)

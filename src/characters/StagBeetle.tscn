@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/characters/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/spritesheets/StagBeetleSpritesheet.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://src/states/Enemy/StagBeetleMoving.gd" type="Script" id=3]
+[ext_resource path="res://src/characters/StagBeetleChasing.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 44.6665, 22.8195 )
@@ -15,9 +17,28 @@ shape = SubResource( 1 )
 
 [node name="Sprite" parent="Pivot" index="0"]
 frames = ExtResource( 2 )
-animation = "idle"
-frame = 1
-playing = true
+
+[node name="Hitbox" parent="Pivot/Hitbox" index="0"]
+position = Vector2( 24.1565, -12.7228 )
+scale = Vector2( 6, 5.76 )
+
+[node name="StateMachine" parent="." index="2"]
+chase_dist = 200
+
+[node name="Moving" parent="StateMachine" index="2"]
+script = ExtResource( 3 )
+
+[node name="Attacking" parent="StateMachine" index="4"]
+start_damage_frame = 0
+end_damage_frame = 3
+
+[node name="Chasing" parent="StateMachine" index="7"]
+script = ExtResource( 4 )
+speed = 220
+speed_multiplier = 1.5
+
+[node name="2DPivot" parent="UI" index="1"]
+position = Vector2( 0.388428, 0.38842 )
 
 [node name="StateLabel" parent="Debug" index="0"]
 margin_left = -101.389
