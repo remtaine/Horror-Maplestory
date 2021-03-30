@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/states/Enemy/EnemyStateMachine.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/states/Enemy/EnemyChasing.gd" type="Script" id=5]
 [ext_resource path="res://src/addons/Hitbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/states/Enemy/EnemyDead.gd" type="Script" id=7]
+[ext_resource path="res://src/states/Enemy/EnemyJumping.gd" type="Script" id=8]
 
 [node name="Enemy" groups=[
 "enemies",
@@ -38,6 +39,9 @@ speed = 80
 wait_time = 3.0
 one_shot = true
 
+[node name="Jumping" parent="StateMachine" index="3"]
+script = ExtResource( 8 )
+
 [node name="Attacking" parent="StateMachine" index="4"]
 start_damage_frame = 2
 end_damage_frame = 5
@@ -56,6 +60,33 @@ speed_multiplier = 2.0
 
 [node name="Health" parent="Attributes" index="0"]
 value = 3
+
+[node name="Footsteps1" parent="Audio/Footsteps" index="0"]
+volume_db = -80.0
+
+[node name="Footsteps2" parent="Audio/Footsteps" index="1"]
+volume_db = -80.0
+
+[node name="Footsteps3" parent="Audio/Footsteps" index="2"]
+volume_db = -80.0
+
+[node name="Footsteps4" parent="Audio/Footsteps" index="3"]
+volume_db = -80.0
+
+[node name="Footsteps5" parent="Audio/Footsteps" index="4"]
+volume_db = -80.0
+
+[node name="Footsteps6" parent="Audio/Footsteps" index="5"]
+volume_db = -80.0
+
+[node name="Landing1" parent="Audio/Landing" index="0"]
+volume_db = -80.0
+
+[node name="Landing2" parent="Audio/Landing" index="1"]
+volume_db = -80.0
+
+[node name="Landing3" parent="Audio/Landing" index="2"]
+volume_db = -80.0
 [connection signal="timeout" from="StateMachine/Idle/WaitTimer" to="StateMachine/Idle" method="_on_WaitTimer_timeout"]
 [connection signal="timeout" from="StateMachine/Moving/MoveTimer" to="StateMachine/Moving" method="_on_MoveTimer_timeout"]
 [connection signal="end_damage" from="StateMachine/Attacking" to="Pivot/Hitbox/Hitbox" method="_on_Attacking_end_damage"]

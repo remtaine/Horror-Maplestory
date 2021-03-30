@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/characters/Player.gd" type="Script" id=2]
@@ -6,10 +6,7 @@
 [ext_resource path="res://assets/images/white_square_pixel.png" type="Texture" id=4]
 [ext_resource path="res://src/UI/HPBar.gd" type="Script" id=5]
 [ext_resource path="res://resources/spritesheets/ArcherSpritesheet.tres" type="SpriteFrames" id=6]
-[ext_resource path="res://src/debug/DebugHolder.gd" type="Script" id=7]
-[ext_resource path="res://src/addons/Scope.gd" type="Script" id=8]
-[ext_resource path="res://src/debug/ScopeVisualizer.gd" type="Script" id=9]
-[ext_resource path="res://assets/images/hero archer/archer-idle.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/heroes/archer/archer-idle.png" type="Texture" id=10]
 [ext_resource path="res://resources/spritesheets/HPWalkieTalkieSpritesheet.tres" type="SpriteFrames" id=11]
 [ext_resource path="res://assets/images/objects/radio-l.png" type="Texture" id=12]
 [ext_resource path="res://src/addons/Screenshake.gd" type="Script" id=13]
@@ -21,12 +18,46 @@
 [ext_resource path="res://assets/fonts/ChevyRay - Softsquare.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://src/characters/PlayerDead.gd" type="Script" id=20]
 [ext_resource path="res://src/UI/PlayerUIPivot.gd" type="Script" id=21]
+[ext_resource path="res://resources/preset fonts/DebugFont.tres" type="DynamicFont" id=22]
+[ext_resource path="res://src/addons/HiddenFade.gd" type="Script" id=23]
+[ext_resource path="res://src/characters/PlayerAttacking.gd" type="Script" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.95538, 22.8195 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "blink"
+resource_name = "hide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "setup"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 0.8
 loop = true
 step = 0.2
@@ -43,8 +74,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.392157, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.392157, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "setup"
+[sub_resource type="Animation" id=5]
 length = 0.001
 loop = true
 step = 0.2
@@ -61,7 +91,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 18
 font_data = ExtResource( 19 )
 
@@ -79,35 +109,6 @@ shape = SubResource( 1 )
 [node name="Sprite" parent="Pivot" index="0"]
 frames = ExtResource( 6 )
 
-[node name="Scope" type="RayCast2D" parent="Pivot/Hitbox" index="0"]
-position = Vector2( 7, 20 )
-enabled = true
-cast_to = Vector2( 500, 0 )
-collision_mask = 4
-collide_with_areas = true
-script = ExtResource( 8 )
-
-[node name="Debug" type="Control" parent="Pivot/Hitbox/Scope" index="0" groups=[
-"debug",
-]]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -7.0
-margin_top = -20.0
-margin_right = -7.0
-margin_bottom = -20.0
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ScopeVisualizer" type="Line2D" parent="Pivot/Hitbox/Scope/Debug" index="0"]
-visible = false
-position = Vector2( 7, 20 )
-points = PoolVector2Array( 0, 0, 500, 0 )
-default_color = Color( 0.709804, 0, 1, 1 )
-script = ExtResource( 9 )
-
 [node name="StateMachine" parent="." index="2"]
 script = ExtResource( 3 )
 
@@ -119,8 +120,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Attacking" parent="StateMachine" index="4"]
-start_damage_frame = 4
-end_damage_frame = 5
+script = ExtResource( 24 )
 
 [node name="Dead" parent="StateMachine" index="5"]
 script = ExtResource( 20 )
@@ -131,7 +131,39 @@ layer = 100
 [node name="UIPivot" parent="UI" index="0"]
 script = ExtResource( 21 )
 
-[node name="HPBar" type="TextureProgress" parent="UI/UIPivot" index="0"]
+[node name="HiddenFade" type="ColorRect" parent="UI/UIPivot" index="0"]
+modulate = Color( 1, 1, 1, 0.490196 )
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/UIPivot/HiddenFade" index="0"]
+autoplay = "setup"
+anims/hide = SubResource( 2 )
+anims/setup = SubResource( 3 )
+
+[node name="HiddenLabel" type="Label" parent="UI/UIPivot/HiddenFade" index="1"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -42.0
+margin_top = -95.7908
+margin_right = 42.0
+margin_bottom = -68.7908
+custom_fonts/font = ExtResource( 22 )
+text = "Hidden"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPBar" type="TextureProgress" parent="UI/UIPivot" index="1"]
 visible = false
 margin_left = 66.7365
 margin_top = 38.5149
@@ -155,7 +187,7 @@ texture = ExtResource( 10 )
 region_enabled = true
 region_rect = Rect2( 8.25938, 16.174, 89.0857, 63.5161 )
 
-[node name="WalkieTalkieControl" type="Control" parent="UI/UIPivot" index="1"]
+[node name="WalkieTalkieControl" type="Control" parent="UI/UIPivot" index="2"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 66.7365
@@ -172,15 +204,15 @@ frames = ExtResource( 11 )
 animation = "4"
 script = ExtResource( 17 )
 
-[node name="StaminaBar" type="TextureProgress" parent="UI/UIPivot" index="2"]
+[node name="StaminaBar" type="TextureProgress" parent="UI/UIPivot" index="3"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -80.0
-margin_top = -70.636
+margin_top = -71.2155
 margin_right = 80.0
-margin_bottom = -40.636
+margin_bottom = -41.2155
 rect_pivot_offset = Vector2( 80, 0 )
 max_value = 200.0
 value = 200.0
@@ -204,10 +236,10 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/UIPivot/StaminaBar" index="1"]
 autoplay = "setup"
-anims/blink = SubResource( 2 )
-anims/setup = SubResource( 3 )
+anims/blink = SubResource( 4 )
+anims/setup = SubResource( 5 )
 
-[node name="RadioProgress" type="TextureProgress" parent="UI/UIPivot" index="3"]
+[node name="RadioProgress" type="TextureProgress" parent="UI/UIPivot" index="4"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -234,7 +266,7 @@ margin_left = -25.895
 margin_top = -10.435
 margin_right = 14.105
 margin_bottom = 7.56503
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 text = "0%"
 align = 2
 valign = 2
@@ -270,7 +302,7 @@ stream = ExtResource( 18 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="7"]
 current = true
-limit_bottom = 575
+limit_bottom = 650
 
 [node name="Screenshake" type="Node2D" parent="Camera2D" index="0"]
 script = ExtResource( 13 )
@@ -280,13 +312,15 @@ script = ExtResource( 13 )
 [node name="FrequencyTimer" type="Timer" parent="Camera2D/Screenshake" index="1"]
 
 [node name="DurationTimer" type="Timer" parent="Camera2D/Screenshake" index="2"]
+[connection signal="enter_hide" from="." to="UI/UIPivot/HiddenFade" method="_on_Player_enter_hide"]
+[connection signal="leave_hide" from="." to="UI/UIPivot/HiddenFade" method="_on_Player_leave_hide"]
 [connection signal="run_ended" from="StateMachine/Moving" to="UI/UIPivot/StaminaBar" method="_on_Moving_run_ended"]
 [connection signal="run_started" from="StateMachine/Moving" to="UI/UIPivot/StaminaBar" method="_on_Moving_run_started"]
 [connection signal="timeout" from="StateMachine/Moving/RunCD" to="UI/UIPivot/StaminaBar" method="_on_RunCD_timeout"]
-[connection signal="attack_launched" from="StateMachine/Attacking" to="Pivot/Hitbox/Scope" method="_on_Attacking_attack_launched"]
 [connection signal="animation_started" from="StateMachine/Hurt/AnimationPlayer" to="Camera2D/Screenshake" method="_on_AnimationPlayer_animation_started"]
 [connection signal="attribute_changed" from="Attributes/Health" to="UI/UIPivot/WalkieTalkieControl/HPWalkieTalkie" method="_on_Health_attribute_changed"]
 [connection signal="is_dead" from="Attributes/Health" to="Camera2D/Screenshake" method="_on_Health_is_dead"]
 [connection signal="is_dead" from="Attributes/Health" to="UI/UIPivot" method="_on_Health_is_dead"]
+[connection signal="animation_finished" from="UI/UIPivot/HiddenFade/AnimationPlayer" to="UI/UIPivot/HiddenFade" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="stamina_empty" from="UI/UIPivot/StaminaBar" to="StateMachine/Moving" method="_on_StaminaBar_stamina_empty"]
 [connection signal="timeout" from="UI/UIPivot/StaminaBar/DisappearTimer" to="UI/UIPivot/StaminaBar" method="_on_DisappearTimer_timeout"]

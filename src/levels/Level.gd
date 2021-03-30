@@ -19,7 +19,7 @@ func _ready():
 		Global.character_selected_type = "archer_type"
 #	Global.character_selected_type = archer_type
 	
-#	yield(self, "ready")
+#	yield(self, "ready"	
 	Global.current_character = get(Global.character_selected_type).instance()
 	Global.current_character.position = player_spawn_point.position
 	$Characters.add_child(Global.current_character)

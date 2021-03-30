@@ -145,66 +145,66 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node2D" parent="."]
 
-[node name="Footsteps" type="Node" parent="Audio"]
+[node name="Footsteps" type="Node2D" parent="Audio"]
 
-[node name="Footsteps1" type="AudioStreamPlayer" parent="Audio/Footsteps"]
+[node name="Footsteps1" type="AudioStreamPlayer2D" parent="Audio/Footsteps"]
 stream = ExtResource( 21 )
 volume_db = -12.0
 pitch_scale = 0.9
 
-[node name="Footsteps2" type="AudioStreamPlayer" parent="Audio/Footsteps"]
+[node name="Footsteps2" type="AudioStreamPlayer2D" parent="Audio/Footsteps"]
 stream = ExtResource( 22 )
 volume_db = -12.0
 pitch_scale = 0.9
 
-[node name="Footsteps3" type="AudioStreamPlayer" parent="Audio/Footsteps"]
+[node name="Footsteps3" type="AudioStreamPlayer2D" parent="Audio/Footsteps"]
 stream = ExtResource( 18 )
 volume_db = -12.0
 pitch_scale = 0.9
 
-[node name="Footsteps4" type="AudioStreamPlayer" parent="Audio/Footsteps"]
+[node name="Footsteps4" type="AudioStreamPlayer2D" parent="Audio/Footsteps"]
 stream = ExtResource( 19 )
 volume_db = -12.0
 pitch_scale = 0.9
 
-[node name="Footsteps5" type="AudioStreamPlayer" parent="Audio/Footsteps"]
+[node name="Footsteps5" type="AudioStreamPlayer2D" parent="Audio/Footsteps"]
 stream = ExtResource( 4 )
 volume_db = -12.0
 pitch_scale = 0.9
 
-[node name="Footsteps6" type="AudioStreamPlayer" parent="Audio/Footsteps"]
+[node name="Footsteps6" type="AudioStreamPlayer2D" parent="Audio/Footsteps"]
 stream = ExtResource( 14 )
 volume_db = -12.0
 pitch_scale = 0.9
 
-[node name="Attacking" type="Node" parent="Audio"]
+[node name="Attacking" type="Node2D" parent="Audio"]
 
-[node name="Attack1" type="AudioStreamPlayer" parent="Audio/Attacking"]
+[node name="Attack1" type="AudioStreamPlayer2D" parent="Audio/Attacking"]
 stream = ExtResource( 23 )
 
-[node name="Landing" type="Node" parent="Audio"]
+[node name="Landing" type="Node2D" parent="Audio"]
 
-[node name="Landing1" type="AudioStreamPlayer" parent="Audio/Landing"]
+[node name="Landing1" type="AudioStreamPlayer2D" parent="Audio/Landing"]
 stream = ExtResource( 5 )
 volume_db = -16.0
 
-[node name="Landing2" type="AudioStreamPlayer" parent="Audio/Landing"]
+[node name="Landing2" type="AudioStreamPlayer2D" parent="Audio/Landing"]
 stream = ExtResource( 17 )
 volume_db = -16.0
 
-[node name="Landing3" type="AudioStreamPlayer" parent="Audio/Landing"]
+[node name="Landing3" type="AudioStreamPlayer2D" parent="Audio/Landing"]
 stream = ExtResource( 20 )
 volume_db = -16.0
 
-[node name="Hurt" type="Node" parent="Audio"]
+[node name="Hurt" type="Node2D" parent="Audio"]
 
-[node name="Jumping" type="Node" parent="Audio"]
+[node name="Jumping" type="Node2D" parent="Audio"]
 [connection signal="state_changed" from="." to="Debug/StateLabel" method="_on_Character_state_changed"]
 [connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Dead" method="_on_Sprite_animation_finished"]
-[connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Hurt" method="_on_Sprite_animation_finished"]
 [connection signal="animation_finished" from="Pivot/Sprite" to="StateMachine/Attacking" method="_on_Sprite_animation_finished"]
 [connection signal="frame_changed" from="Pivot/Sprite" to="StateMachine/Attacking" method="_on_Sprite_frame_changed"]
 [connection signal="frame_changed" from="Pivot/Sprite" to="StateMachine/Moving" method="_on_Sprite_frame_changed"]
 [connection signal="animation_finished" from="StateMachine/Hurt/AnimationPlayer" to="StateMachine/Hurt" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="is_dead" from="Attributes/Health" to="." method="_on_Health_is_dead"]

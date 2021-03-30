@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/spritesheets/RiflerSpritesheet.tres" type="SpriteFrames" id=2]
-[ext_resource path="res://assets/images/hero faces/gally.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/heroes/faces/gally.png" type="Texture" id=3]
+[ext_resource path="res://src/addons/Scope.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.95538, 22.8195 )
@@ -16,11 +17,12 @@ shape = SubResource( 1 )
 [node name="Sprite" parent="Pivot" index="0"]
 frames = ExtResource( 2 )
 
+[node name="Scope" parent="Pivot" index="2" instance=ExtResource( 4 )]
+
 [node name="Head" parent="UI/UIPivot/HPBar" index="0"]
 position = Vector2( -0.05653, 0.36516 )
 scale = Vector2( 0.004, 0.065 )
 texture = ExtResource( 3 )
 region_enabled = false
 region_rect = Rect2( 8.25938, 16.174, 98.1098, 98.3303 )
-[connection signal="animation_started" from="StateMachine/Hurt/AnimationPlayer" to="Camera2D/Screenshake" method="_on_AnimationPlayer_animation_started"]
-[connection signal="is_dead" from="Attributes/Health" to="Camera2D/Screenshake" method="_on_Health_is_dead"]
+[connection signal="attack_launched" from="StateMachine/Attacking" to="Pivot/Scope" method="_on_Attacking_attack_launched"]

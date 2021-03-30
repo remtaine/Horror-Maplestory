@@ -9,7 +9,6 @@
 extents = Vector2( 44.6665, 22.8195 )
 
 [node name="StagBeetle" instance=ExtResource( 1 )]
-is_flying = true
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -21.3814, -8.26871 )
@@ -27,6 +26,9 @@ chase_dist = 200
 
 [node name="Moving" parent="StateMachine" index="2"]
 script = ExtResource( 3 )
+
+[node name="MoveTimer" parent="StateMachine/Moving" index="1"]
+wait_time = 1.5
 
 [node name="Attacking" parent="StateMachine" index="4"]
 start_damage_frame = 0

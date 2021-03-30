@@ -8,6 +8,7 @@ var _state : State = null setget ,get_state
 var is_flipped : bool = false
 var possible_states : Dictionary = {}
 
+var is_dead = false
 var velocity := Vector2.ZERO
 var direction := Vector2.ZERO
 
@@ -31,12 +32,15 @@ func _ready():
 func _physics_process(_delta):
 #	if _state.state_name != "dead":
 	var input = _state.get_raw_input()
-	change_state(_state.interpret_inputs(input))
+	if not is_dead:
+		change_state(_state.interpret_inputs(input))
 	_state.run(input)
 		
 		
 func change_state(state_name, repeat = false):
 	var new_state = possible_states[state_name]
+	if _state.state_name == "dead":
+		return
 	if _state != new_state or repeat:
 		_state.exit()
 		_state = new_state
@@ -62,4 +66,9 @@ func play_sound(audio : String) -> void:
 
 
 func take_damage(value : int) -> void:
-	hp.take_damage(value)
+	if not is_dead:
+		hp.take_damage(value)
+
+
+func _on_Health_is_dead() -> void:
+	is_dead = true

@@ -19,7 +19,7 @@ frame = 1
 playing = true
 
 [node name="Hitbox" parent="Pivot/Hitbox" index="0"]
-position = Vector2( 25.3147, 58.2647 )
+position = Vector2( 35.8518, 28.0044 )
 scale = Vector2( 2.3388, 1.79276 )
 
 [node name="StateMachine" parent="." index="2"]
@@ -30,12 +30,3 @@ margin_top = -19.8693
 margin_bottom = -1.86933
 
 [node name="Line2D" type="Line2D" parent="." index="6"]
-
-[node name="Landing1" parent="Audio/Landing" index="0"]
-volume_db = -80.0
-
-[node name="Landing2" parent="Audio/Landing" index="1"]
-volume_db = -80.0
-
-[node name="Landing3" parent="Audio/Landing" index="2"]
-volume_db = -80.0

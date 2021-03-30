@@ -3,9 +3,6 @@ extends State
 
 export var speed : int = 220
 
-onready var tween : Tween = $Tween
-onready var run_cd : Timer = $RunCD
-
 signal run_started
 signal run_ended
 
@@ -16,7 +13,7 @@ func _ready():
 	owner = get_parent().get_parent()
 	
 func run(input):
-	if Input.is_action_pressed("run") and run_cd.is_stopped():
+	if Input.is_action_pressed("run") and $RunCD.is_stopped():
 		owner.speed = 2 * speed
 		emit_signal("run_started")
 	else:
@@ -46,4 +43,4 @@ func _on_Sprite_frame_changed() -> void:
 
 func _on_StaminaBar_stamina_empty() -> void:
 	owner.speed = speed
-	run_cd.start()
+	$RunCD.start()

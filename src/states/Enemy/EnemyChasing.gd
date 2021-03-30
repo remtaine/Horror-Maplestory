@@ -16,4 +16,4 @@ func enter() -> void:
 
 
 func exit() -> void:
-	owner.speed /= 2
+	owner.speed /= speed_multiplier

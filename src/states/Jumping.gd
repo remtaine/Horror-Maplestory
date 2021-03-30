@@ -1,7 +1,7 @@
 class_name Jumping
 extends State
 
-const JUMP_SPEED := 320
+export var JUMP_SPEED := 320
 func _ready():
 	state_name = "jumping"
 

@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/characters/Jackalope.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/spritesheets/WendigoSpritesheet.tres" type="SpriteFrames" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 29.3005, 17.3896 )
+
+[node name="Wendigo" instance=ExtResource( 1 )]
+collision/safe_margin = 0.01
+damage = 99999
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( -8.37575, 11.3653 )
+scale = Vector2( 2.6457, 6.57109 )
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="Pivot" index="0"]
+frames = ExtResource( 2 )
+animation = "attacking"
+frame = 6
+playing = false
+
+[node name="Hitbox" parent="Pivot/Hitbox" index="0"]
+position = Vector2( 67.8189, 43.7748 )
+scale = Vector2( 5.95219, 1.44938 )
+
+[node name="StateMachine" parent="." index="2"]
+chase_dist = 99999
+
+[node name="Moving" parent="StateMachine" index="2"]
+speed = 60
+
+[node name="Attacking" parent="StateMachine" index="4"]
+start_damage_frame = 5
+end_damage_frame = 6
+
+[node name="Chasing" parent="StateMachine" index="7"]
+speed_multiplier = 1.5
+
+[node name="Health" parent="Attributes" index="0"]
+value = 99999999

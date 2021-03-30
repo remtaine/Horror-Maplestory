@@ -9,11 +9,18 @@ var is_hiding := false
 
 onready var scope : RayCast2D = $Pivot/Scope
 onready var radio_progress : TextureProgress = $UI/UIPivot/RadioProgress
+onready var hidden_fade : ColorRect = $UI/UIPivot/HiddenFade
+onready var hidden_label : Label = $UI/UIPivot/HiddenLabel
 
 signal has_won
-signal has_lost
+#signal has_lost
+#signal hidden
+
+signal enter_hide
+signal leave_hide
 
 func _ready() -> void:
+	hidden_fade.visible = false
 	print("EVEVE", Global.current_level)
 	var _error = self.connect("has_won", Global.current_level, "go_to_win")
 	_error = self.connect("has_lost", Global.current_level, "go_to_lose")
@@ -52,6 +59,14 @@ func pick_up (item : String) -> void:
 #func _on_GroundHolder_ground_set() -> void:
 #	ground_set = true
 
+
+func hide_behind(value := true):
+	if value:
+		emit_signal("enter_hide")
+	elif is_hiding:
+		emit_signal("leave_hide")
+	is_hiding = value
+	
 
 func play_sound(audio : String) -> void:
 	match audio:

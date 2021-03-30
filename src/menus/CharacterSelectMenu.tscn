@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/ChevyRay - Softsquare.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/menus/Buttons/CharacterSelectButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/menus/CharacterHolder.gd" type="Script" id=3]
 [ext_resource path="res://src/menus/Buttons/MainMenuButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/images/hero rifle/old/rifler.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/heroes/rifler/old/rifler.png" type="Texture" id=5]
 [ext_resource path="res://assets/audio/themes/Base Ambience.ogg" type="AudioStream" id=6]
-[ext_resource path="res://assets/images/hero rifle/old/rifler-fall.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/heroes/flasher/flash-fall-l.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/backgrounds/far backgrounds/swamp-bg2B.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 90
@@ -21,6 +22,16 @@ shortcut = SubResource( 2 )
 [node name="CharacterSelectMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 4.0
+texture = ExtResource( 8 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -53,8 +64,8 @@ __meta__ = {
 path = "res://src/levels/Level.tscn"
 
 [node name="Archer" parent="CharacterHolder" instance=ExtResource( 2 )]
-margin_left = 258.0
-margin_right = 430.0
+margin_left = 238.0
+margin_right = 410.0
 autofocus = true
 
 [node name="Character" parent="CharacterHolder/Archer" index="0"]
@@ -66,8 +77,8 @@ focus_next = NodePath("../../Rifler/Character")
 focus_previous = NodePath("../../Flasher/Character")
 
 [node name="Rifler" parent="CharacterHolder" instance=ExtResource( 2 )]
-margin_left = 434.0
-margin_right = 566.0
+margin_left = 414.0
+margin_right = 546.0
 
 [node name="Character" parent="CharacterHolder/Rifler" index="0"]
 margin_right = 132.0
@@ -84,11 +95,10 @@ margin_right = 132.0
 text = "Rifler"
 
 [node name="Flasher" parent="CharacterHolder" instance=ExtResource( 2 )]
-margin_left = 570.0
-margin_right = 702.0
+margin_left = 550.0
+margin_right = 722.0
 
 [node name="Character" parent="CharacterHolder/Flasher" index="0"]
-margin_right = 132.0
 focus_neighbour_left = NodePath("../../Rifler/Character")
 focus_neighbour_top = NodePath("../../Rifler/Character")
 focus_neighbour_right = NodePath("../../Archer/Character")
@@ -98,8 +108,16 @@ focus_previous = NodePath("../../Rifler/Character")
 icon = ExtResource( 7 )
 
 [node name="Name" parent="CharacterHolder/Flasher" index="1"]
-margin_right = 132.0
 text = "Flasher"
+
+[node name="Fire" type="TextureRect" parent="."]
+margin_left = 568.0
+margin_top = 182.036
+margin_right = 568.0
+margin_bottom = 382.036
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BackButton" parent="." instance=ExtResource( 4 )]
 anchor_left = 1.0

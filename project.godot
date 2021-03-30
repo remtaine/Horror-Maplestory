@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/states/Enemy/EnemyIdle.gd"
 }, {
+"base": "Jumping",
+"class": "EnemyJumping",
+"language": "GDScript",
+"path": "res://src/states/Enemy/EnemyJumping.gd"
+}, {
 "base": "Moving",
 "class": "EnemyMoving",
 "language": "GDScript",
@@ -78,6 +83,16 @@ _global_script_classes=[ {
 "class": "Health",
 "language": "GDScript",
 "path": "res://src/stats/Health.gd"
+}, {
+"base": "Node2D",
+"class": "HiddenDecor",
+"language": "GDScript",
+"path": "res://src/addons/HiddenDecor.gd"
+}, {
+"base": "ColorRect",
+"class": "HiddenFade",
+"language": "GDScript",
+"path": "res://src/addons/HiddenFade.gd"
 }, {
 "base": "Area2D",
 "class": "Hitbox",
@@ -123,6 +138,11 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://src/characters/Player.gd"
+}, {
+"base": "Attacking",
+"class": "PlayerAttacking",
+"language": "GDScript",
+"path": "res://src/characters/PlayerAttacking.gd"
 }, {
 "base": "Dead",
 "class": "PlayerDead",
@@ -192,6 +212,7 @@ _global_script_class_icons={
 "EnemyChasing": "",
 "EnemyDead": "",
 "EnemyIdle": "",
+"EnemyJumping": "",
 "EnemyMoving": "",
 "EnemyStateMachine": "",
 "Falling": "",
@@ -199,6 +220,8 @@ _global_script_class_icons={
 "HPBar": "",
 "HPWalkieTalkie": "",
 "Health": "",
+"HiddenDecor": "",
+"HiddenFade": "",
 "Hitbox": "",
 "Hurt": "",
 "Idle": "",
@@ -208,6 +231,7 @@ _global_script_class_icons={
 "Moving": "",
 "PanelController": "",
 "Player": "",
+"PlayerAttacking": "",
 "PlayerDead": "",
 "Scope": "",
 "Screenshake": "",
@@ -359,6 +383,7 @@ run={
 2d_physics/layer_6="player hitbox"
 2d_physics/layer_7="enemy hitbox"
 2d_physics/layer_8="pickups"
+2d_physics/layer_9="decor"
 
 [rendering]
 

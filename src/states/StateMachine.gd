@@ -18,19 +18,22 @@ func get_raw_input() -> Dictionary:
 
 func interpret_inputs(input):
 	var state_name = owner.get_state().state_name
+	if owner.is_in_group("player"):
+		print(state_name)
+		
 	if state_name == "dead":
 		return "dead"
-	if state_name == "hurt":
+	elif state_name == "hurt":
 		return "hurt"
 	elif state_name == "attacking" or input.is_attacking:
 		return "attacking"
 		
-	if (owner.is_on_floor() and input.is_jumping) or owner.velocity.y < 0:
+	elif (owner.is_on_floor() and input.is_jumping) or owner.velocity.y < 0:
 		return "jumping"
 	elif not owner.is_on_floor() and not owner.is_flying:
 		return "falling"
 	
-	if input.is_moving:
+	elif input.is_moving:
 		return "moving"
 	else:
 		return "idle"

@@ -12,7 +12,7 @@ onready var tween : Tween = $Tween
 
 
 func _ready() -> void:
-	self.connect("pressed", self, "activate")
+	var _error = self.connect("pressed", self, "activate")
 	default_text = text
 	if autofocus:
 		grab_focus()

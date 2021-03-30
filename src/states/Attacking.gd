@@ -14,6 +14,7 @@ func _ready():
 
 func enter() -> void:
 	owner.play_sound("attacking")
+	
 	if owner.sprite.animation != "attacking":
 		owner.sprite.play("attacking")
 	emit_signal("attack_launched")
@@ -21,7 +22,7 @@ func enter() -> void:
 	
 func exit() -> void:
 	emit_signal("end_damage")
-	if $Timer: #while this timer is started, character can't attack
+	if $Timer != null: #while this timer is started, character can't attack
 		$Timer.start()
 	
 	

@@ -6,4 +6,4 @@ onready var version_label : Label = $CanvasLayer/UIControl/PanelController/Credi
 
 func _ready() -> void:
 	version_label.text = Global.version
-
+	$CanvasLayer/UIControl/PanelController.visible = true

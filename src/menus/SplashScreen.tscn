@@ -32,7 +32,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 path = "res://src/menus/MainMenu.tscn"
-is_skippable = true
 
 [node name="Label" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )

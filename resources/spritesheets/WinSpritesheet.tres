@@ -1,6 +1,10 @@
 [gd_resource type="SpriteFrames" load_steps=8 format=2]
 
-[ext_resource path="res://assets/images/hero archer/archer-move v3.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/heroes/archer/archer-move v3.png" type="Texture" id=1]
+
+
+
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )

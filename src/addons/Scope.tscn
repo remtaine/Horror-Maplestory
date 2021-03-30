@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/debug/ScopeVisualizer.gd" type="Script" id=1]
+[ext_resource path="res://src/debug/DebugHolder.gd" type="Script" id=2]
+[ext_resource path="res://src/addons/Scope.gd" type="Script" id=3]
+
+[node name="Scope" type="RayCast2D"]
+visible = false
+position = Vector2( 7, 20 )
+enabled = true
+cast_to = Vector2( 500, 0 )
+collision_mask = 4
+collide_with_areas = true
+script = ExtResource( 3 )
+
+[node name="Debug" type="Control" parent="." groups=[
+"debug",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -7.0
+margin_top = -20.0
+margin_right = -7.0
+margin_bottom = -20.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScopeVisualizer" type="Line2D" parent="Debug"]
+visible = false
+position = Vector2( 7, 20 )
+points = PoolVector2Array( 0, 0, 500, 0 )
+default_color = Color( 0.709804, 0, 1, 1 )
+script = ExtResource( 1 )

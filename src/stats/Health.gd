@@ -21,11 +21,10 @@ func take_damage(v : int) -> void:
 	print_debug(value)
 	emit_signal("attribute_changed", self)
 	
-	if value <= 0:
-#		emit_signal("attribute_depleted", self)
-		owner.change_state("dead")
-		emit_signal("is_dead")
-	else:
-		owner.change_state("hurt")
+	if value >= 1:
 		emit_signal("is_hurt")
-		
+		owner.change_state("hurt")
+	else:
+#		emit_signal("attribute_depleted", self)
+		emit_signal("is_dead")
+		owner.change_state("dead")	
