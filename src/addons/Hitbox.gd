@@ -15,7 +15,7 @@ func deactivate() -> void:
 
 
 func _on_Hitbox_body_entered(body: Node) -> void:
-	if body.is_in_group(target_group) and body.has_method("take_damage"):
+	if body.is_in_group(target_group) and not body.is_dead and body.has_method("take_damage"):
 		body.take_damage(owner.damage)
 
 

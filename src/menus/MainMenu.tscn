@@ -1,10 +1,10 @@
-[gd_scene load_steps=171 format=2]
+[gd_scene load_steps=179 format=2]
 
 [ext_resource path="res://assets/fonts/ChevyRay - Softsquare.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/menus/Buttons/MainMenuButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/menus/panels/MenuPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/menus/PanelController.gd" type="Script" id=4]
-[ext_resource path="res://resources/preset fonts/DebugFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/ChevyRay - Roundabout.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/images/team/avatar_sprite v1.png" type="Texture" id=6]
 [ext_resource path="res://assets/audio/themes/Base Ambience.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/audio/UI/UI_Change_of_set.wav" type="AudioStream" id=8]
@@ -32,7 +32,10 @@
 [ext_resource path="res://assets/images/heroes/flasher/flashy-walk.png" type="Texture" id=30]
 [ext_resource path="res://assets/images/heroes/flasher/flash-l.png" type="Texture" id=31]
 [ext_resource path="res://resources/shaders/Fog.shader" type="Shader" id=32]
+[ext_resource path="res://resources/spritesheets/WendigoSpritesheet.tres" type="SpriteFrames" id=33]
 [ext_resource path="res://assets/images/heroes/flasher/flash-dmg-ko.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/tiles/Outside_Cx2-version.png" type="Texture" id=35]
+[ext_resource path="res://resources/preset fonts/MenuFont.tres" type="DynamicFont" id=36]
 [ext_resource path="res://assets/images/enemies/jackalope/jackalope-dead.png" type="Texture" id=37]
 [ext_resource path="res://assets/images/enemies/jackalope/jackalope-attk.png" type="Texture" id=38]
 [ext_resource path="res://assets/images/enemies/jackalope/jackalope-walk.png" type="Texture" id=39]
@@ -40,270 +43,268 @@
 [ext_resource path="res://assets/images/enemies/zombido/zomr-idle.png" type="Texture" id=41]
 [ext_resource path="res://assets/images/enemies/zombido/zom-dead.png" type="Texture" id=42]
 [ext_resource path="res://assets/images/enemies/zombido/zombirun.png" type="Texture" id=43]
+[ext_resource path="res://resources/preset fonts/TitleFont.tres" type="DynamicFont" id=44]
+[ext_resource path="res://assets/images/team/team avatar apmus.jpg" type="Texture" id=45]
+[ext_resource path="res://assets/fonts/ChevyRay - Skullboy.ttf" type="DynamicFontData" id=46]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=134]
 atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 100, 140 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=135]
 atlas = ExtResource( 15 )
 region = Rect2( 100, 0, 100, 140 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=136]
 atlas = ExtResource( 15 )
 region = Rect2( 200, 0, 100, 140 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=137]
 atlas = ExtResource( 15 )
 region = Rect2( 300, 0, 100, 140 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=138]
 atlas = ExtResource( 22 )
 region = Rect2( 0, 0, 160, 140 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=139]
 atlas = ExtResource( 22 )
 region = Rect2( 160, 0, 160, 140 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=140]
 atlas = ExtResource( 22 )
 region = Rect2( 320, 0, 160, 140 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=141]
 atlas = ExtResource( 22 )
 region = Rect2( 480, 0, 160, 140 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=142]
 atlas = ExtResource( 22 )
 region = Rect2( 640, 0, 160, 140 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=143]
 atlas = ExtResource( 22 )
 region = Rect2( 800, 0, 160, 140 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=144]
 atlas = ExtResource( 21 )
 region = Rect2( 0, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=145]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=146]
 atlas = ExtResource( 19 )
 region = Rect2( 200, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=147]
 atlas = ExtResource( 19 )
 region = Rect2( 400, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=148]
 atlas = ExtResource( 18 )
 region = Rect2( 0, 0, 152, 133 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=149]
 atlas = ExtResource( 18 )
 region = Rect2( 152, 0, 152, 133 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=150]
 atlas = ExtResource( 18 )
 region = Rect2( 304, 0, 152, 133 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=151]
 atlas = ExtResource( 18 )
 region = Rect2( 456, 0, 152, 133 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=152]
 atlas = ExtResource( 18 )
 region = Rect2( 608, 0, 152, 133 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=153]
 atlas = ExtResource( 18 )
 region = Rect2( 760, 0, 152, 133 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=154]
 atlas = ExtResource( 19 )
 region = Rect2( 600, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=155]
 atlas = ExtResource( 19 )
 region = Rect2( 800, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=156]
 atlas = ExtResource( 19 )
 region = Rect2( 1000, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=157]
 atlas = ExtResource( 19 )
 region = Rect2( 1200, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=158]
 atlas = ExtResource( 19 )
 region = Rect2( 1400, 0, 200, 160 )
 
-[sub_resource type="SpriteFrames" id=26]
+[sub_resource type="SpriteFrames" id=159]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ) ],
 "loop": true,
 "name": "idle",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 138 ), SubResource( 139 ), SubResource( 140 ), SubResource( 141 ), SubResource( 142 ), SubResource( 143 ) ],
 "loop": true,
 "name": "attacking",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 11 ) ],
+"frames": [ SubResource( 144 ) ],
 "loop": true,
 "name": "falling",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [ SubResource( 145 ), SubResource( 146 ), SubResource( 147 ) ],
 "loop": true,
 "name": "hurt",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"frames": [ SubResource( 148 ), SubResource( 149 ), SubResource( 150 ), SubResource( 151 ), SubResource( 152 ), SubResource( 153 ) ],
 "loop": true,
 "name": "moving",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 23 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"frames": [ SubResource( 154 ), SubResource( 155 ), SubResource( 156 ), SubResource( 156 ), SubResource( 156 ), SubResource( 157 ), SubResource( 158 ) ],
 "loop": true,
 "name": "dead",
 "speed": 6.0
 } ]
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=160]
 atlas = ExtResource( 26 )
 region = Rect2( 0, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=161]
 atlas = ExtResource( 26 )
 region = Rect2( 160, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=162]
 atlas = ExtResource( 26 )
 region = Rect2( 320, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=163]
 atlas = ExtResource( 26 )
 region = Rect2( 480, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 16 )
-region = Rect2( 0, 0, 120, 160 )
-
-[sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 16 )
-region = Rect2( 120, 0, 120, 160 )
-
-[sub_resource type="AtlasTexture" id=33]
-atlas = ExtResource( 16 )
-region = Rect2( 240, 0, 120, 160 )
-
-[sub_resource type="AtlasTexture" id=34]
-atlas = ExtResource( 16 )
-region = Rect2( 360, 0, 120, 160 )
-
-[sub_resource type="AtlasTexture" id=35]
+[sub_resource type="AtlasTexture" id=164]
 atlas = ExtResource( 17 )
 region = Rect2( 0, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=36]
+[sub_resource type="AtlasTexture" id=165]
 atlas = ExtResource( 17 )
 region = Rect2( 160, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=37]
+[sub_resource type="AtlasTexture" id=166]
 atlas = ExtResource( 17 )
 region = Rect2( 320, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=38]
+[sub_resource type="AtlasTexture" id=167]
 atlas = ExtResource( 17 )
 region = Rect2( 480, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=39]
+[sub_resource type="AtlasTexture" id=168]
 atlas = ExtResource( 17 )
 region = Rect2( 640, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=40]
+[sub_resource type="AtlasTexture" id=169]
 atlas = ExtResource( 17 )
 region = Rect2( 800, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=41]
+[sub_resource type="AtlasTexture" id=170]
 atlas = ExtResource( 23 )
 region = Rect2( 0, 0, 180, 160 )
 
-[sub_resource type="AtlasTexture" id=42]
+[sub_resource type="AtlasTexture" id=171]
 atlas = ExtResource( 23 )
 region = Rect2( 180, 0, 180, 160 )
 
-[sub_resource type="AtlasTexture" id=43]
+[sub_resource type="AtlasTexture" id=172]
 atlas = ExtResource( 23 )
 region = Rect2( 360, 0, 180, 160 )
 
-[sub_resource type="AtlasTexture" id=44]
+[sub_resource type="AtlasTexture" id=173]
 atlas = ExtResource( 25 )
 region = Rect2( 0, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=45]
+[sub_resource type="AtlasTexture" id=174]
 atlas = ExtResource( 25 )
 region = Rect2( 160, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=46]
+[sub_resource type="AtlasTexture" id=175]
 atlas = ExtResource( 25 )
 region = Rect2( 320, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=47]
+[sub_resource type="AtlasTexture" id=176]
 atlas = ExtResource( 25 )
 region = Rect2( 480, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=48]
+[sub_resource type="AtlasTexture" id=177]
 atlas = ExtResource( 25 )
 region = Rect2( 640, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=49]
+[sub_resource type="AtlasTexture" id=178]
 atlas = ExtResource( 25 )
 region = Rect2( 800, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=50]
+[sub_resource type="AtlasTexture" id=179]
 atlas = ExtResource( 23 )
 region = Rect2( 540, 0, 180, 160 )
 
-[sub_resource type="AtlasTexture" id=51]
+[sub_resource type="AtlasTexture" id=180]
 atlas = ExtResource( 23 )
 region = Rect2( 720, 0, 180, 160 )
 
-[sub_resource type="AtlasTexture" id=52]
+[sub_resource type="AtlasTexture" id=181]
 atlas = ExtResource( 23 )
 region = Rect2( 900, 0, 180, 160 )
 
-[sub_resource type="AtlasTexture" id=53]
+[sub_resource type="AtlasTexture" id=182]
 atlas = ExtResource( 23 )
 region = Rect2( 1080, 0, 180, 160 )
 
-[sub_resource type="AtlasTexture" id=54]
+[sub_resource type="AtlasTexture" id=183]
 atlas = ExtResource( 23 )
 region = Rect2( 1260, 0, 180, 160 )
 
-[sub_resource type="SpriteFrames" id=55]
+[sub_resource type="AtlasTexture" id=184]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 120, 160 )
+
+[sub_resource type="AtlasTexture" id=185]
+atlas = ExtResource( 16 )
+region = Rect2( 120, 0, 120, 160 )
+
+[sub_resource type="AtlasTexture" id=186]
+atlas = ExtResource( 16 )
+region = Rect2( 240, 0, 120, 160 )
+
+[sub_resource type="AtlasTexture" id=187]
+atlas = ExtResource( 16 )
+region = Rect2( 360, 0, 120, 160 )
+
+[sub_resource type="SpriteFrames" id=188]
 animations = [ {
-"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
-"loop": true,
-"name": "reload",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 24 ) ],
 "loop": true,
 "name": "idle",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"frames": [ SubResource( 160 ), SubResource( 161 ), SubResource( 162 ), SubResource( 163 ) ],
 "loop": true,
-"name": "climb",
+"name": "reload",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ) ],
+"frames": [ SubResource( 164 ), SubResource( 165 ), SubResource( 166 ), SubResource( 167 ), SubResource( 168 ), SubResource( 169 ) ],
 "loop": false,
 "name": "attacking",
 "speed": 10.0
@@ -313,123 +314,123 @@ animations = [ {
 "name": "falling",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 41 ), SubResource( 42 ), SubResource( 43 ) ],
+"frames": [ SubResource( 170 ), SubResource( 171 ), SubResource( 172 ) ],
 "loop": false,
 "name": "hurt",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ) ],
+"frames": [ SubResource( 173 ), SubResource( 174 ), SubResource( 175 ), SubResource( 176 ), SubResource( 177 ), SubResource( 178 ) ],
 "loop": true,
 "name": "moving",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ) ],
+"frames": [ SubResource( 179 ), SubResource( 180 ), SubResource( 181 ), SubResource( 182 ), SubResource( 183 ) ],
 "loop": false,
 "name": "dead",
 "speed": 6.0
+}, {
+"frames": [ SubResource( 184 ), SubResource( 185 ), SubResource( 186 ), SubResource( 187 ) ],
+"loop": true,
+"name": "climb",
+"speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=56]
+[sub_resource type="AtlasTexture" id=189]
 atlas = ExtResource( 28 )
 region = Rect2( 0, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=57]
+[sub_resource type="AtlasTexture" id=190]
 atlas = ExtResource( 28 )
 region = Rect2( 160, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=58]
+[sub_resource type="AtlasTexture" id=191]
 atlas = ExtResource( 28 )
 region = Rect2( 320, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=59]
+[sub_resource type="AtlasTexture" id=192]
 atlas = ExtResource( 28 )
 region = Rect2( 480, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=60]
+[sub_resource type="AtlasTexture" id=193]
 atlas = ExtResource( 28 )
 region = Rect2( 640, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=61]
+[sub_resource type="AtlasTexture" id=194]
 atlas = ExtResource( 28 )
 region = Rect2( 800, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=62]
+[sub_resource type="AtlasTexture" id=195]
 atlas = ExtResource( 28 )
 region = Rect2( 960, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=63]
+[sub_resource type="AtlasTexture" id=196]
 atlas = ExtResource( 34 )
 region = Rect2( 240, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=64]
+[sub_resource type="AtlasTexture" id=197]
 atlas = ExtResource( 34 )
 region = Rect2( 480, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=65]
+[sub_resource type="AtlasTexture" id=198]
 atlas = ExtResource( 34 )
 region = Rect2( 720, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=66]
+[sub_resource type="AtlasTexture" id=199]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=67]
+[sub_resource type="AtlasTexture" id=200]
 atlas = ExtResource( 30 )
 region = Rect2( 160, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=68]
+[sub_resource type="AtlasTexture" id=201]
 atlas = ExtResource( 30 )
 region = Rect2( 320, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=69]
+[sub_resource type="AtlasTexture" id=202]
 atlas = ExtResource( 30 )
 region = Rect2( 480, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=70]
+[sub_resource type="AtlasTexture" id=203]
 atlas = ExtResource( 30 )
 region = Rect2( 640, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=71]
+[sub_resource type="AtlasTexture" id=204]
 atlas = ExtResource( 30 )
 region = Rect2( 800, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=72]
+[sub_resource type="AtlasTexture" id=205]
 atlas = ExtResource( 34 )
 region = Rect2( 960, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=73]
+[sub_resource type="AtlasTexture" id=206]
 atlas = ExtResource( 34 )
 region = Rect2( 1200, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=74]
+[sub_resource type="AtlasTexture" id=207]
 atlas = ExtResource( 34 )
 region = Rect2( 1440, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=75]
+[sub_resource type="AtlasTexture" id=208]
 atlas = ExtResource( 34 )
 region = Rect2( 1680, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=76]
+[sub_resource type="AtlasTexture" id=209]
 atlas = ExtResource( 34 )
 region = Rect2( 1920, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=77]
+[sub_resource type="AtlasTexture" id=210]
 atlas = ExtResource( 34 )
 region = Rect2( 2160, 0, 240, 160 )
 
-[sub_resource type="SpriteFrames" id=78]
+[sub_resource type="SpriteFrames" id=211]
 animations = [ {
 "frames": [ ExtResource( 31 ) ],
 "loop": true,
 "name": "idle",
 "speed": 4.0
 }, {
-"frames": [ ExtResource( 31 ) ],
-"loop": true,
-"name": "climb",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ) ],
+"frames": [ SubResource( 189 ), SubResource( 190 ), SubResource( 191 ), SubResource( 192 ), SubResource( 193 ), SubResource( 194 ), SubResource( 195 ) ],
 "loop": false,
 "name": "attacking",
 "speed": 10.0
@@ -439,302 +440,315 @@ animations = [ {
 "name": "falling",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 63 ), SubResource( 64 ), SubResource( 65 ) ],
+"frames": [ SubResource( 196 ), SubResource( 197 ), SubResource( 198 ) ],
 "loop": true,
 "name": "hurt",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ) ],
+"frames": [ SubResource( 199 ), SubResource( 200 ), SubResource( 201 ), SubResource( 202 ), SubResource( 203 ), SubResource( 204 ) ],
 "loop": true,
 "name": "moving",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ) ],
+"frames": [ SubResource( 205 ), SubResource( 206 ), SubResource( 207 ), SubResource( 208 ), SubResource( 209 ), SubResource( 210 ) ],
 "loop": false,
 "name": "dead",
 "speed": 6.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": true,
+"name": "climb",
+"speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=79]
+[sub_resource type="AtlasTexture" id=212]
 atlas = ExtResource( 41 )
 region = Rect2( 0, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=80]
+[sub_resource type="AtlasTexture" id=213]
 atlas = ExtResource( 41 )
 region = Rect2( 160, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=81]
+[sub_resource type="AtlasTexture" id=214]
 atlas = ExtResource( 41 )
 region = Rect2( 320, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=82]
+[sub_resource type="AtlasTexture" id=215]
 atlas = ExtResource( 41 )
 region = Rect2( 480, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=83]
+[sub_resource type="AtlasTexture" id=216]
 atlas = ExtResource( 41 )
 region = Rect2( 640, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=84]
+[sub_resource type="AtlasTexture" id=217]
 atlas = ExtResource( 41 )
 region = Rect2( 800, 0, 160, 160 )
 
-[sub_resource type="AtlasTexture" id=85]
+[sub_resource type="AtlasTexture" id=218]
 atlas = ExtResource( 43 )
 region = Rect2( 0, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=86]
+[sub_resource type="AtlasTexture" id=219]
 atlas = ExtResource( 43 )
 region = Rect2( 240, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=87]
+[sub_resource type="AtlasTexture" id=220]
 atlas = ExtResource( 43 )
 region = Rect2( 480, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=88]
+[sub_resource type="AtlasTexture" id=221]
 atlas = ExtResource( 43 )
 region = Rect2( 720, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=89]
+[sub_resource type="AtlasTexture" id=222]
 atlas = ExtResource( 43 )
 region = Rect2( 0, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=90]
+[sub_resource type="AtlasTexture" id=223]
 atlas = ExtResource( 42 )
 region = Rect2( 0, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=91]
+[sub_resource type="AtlasTexture" id=224]
 atlas = ExtResource( 42 )
 region = Rect2( 240, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=92]
+[sub_resource type="AtlasTexture" id=225]
 atlas = ExtResource( 43 )
 region = Rect2( 0, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=93]
+[sub_resource type="AtlasTexture" id=226]
 atlas = ExtResource( 43 )
 region = Rect2( 240, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=94]
+[sub_resource type="AtlasTexture" id=227]
 atlas = ExtResource( 43 )
 region = Rect2( 480, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=95]
+[sub_resource type="AtlasTexture" id=228]
 atlas = ExtResource( 43 )
 region = Rect2( 720, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=96]
+[sub_resource type="AtlasTexture" id=229]
 atlas = ExtResource( 42 )
 region = Rect2( 0, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=97]
+[sub_resource type="AtlasTexture" id=230]
 atlas = ExtResource( 42 )
 region = Rect2( 240, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=98]
+[sub_resource type="AtlasTexture" id=231]
 atlas = ExtResource( 42 )
 region = Rect2( 480, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=99]
+[sub_resource type="AtlasTexture" id=232]
 atlas = ExtResource( 42 )
 region = Rect2( 720, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=100]
+[sub_resource type="AtlasTexture" id=233]
 atlas = ExtResource( 42 )
 region = Rect2( 960, 0, 240, 160 )
 
-[sub_resource type="AtlasTexture" id=101]
+[sub_resource type="AtlasTexture" id=234]
 atlas = ExtResource( 42 )
 region = Rect2( 1200, 0, 240, 160 )
 
-[sub_resource type="SpriteFrames" id=102]
+[sub_resource type="SpriteFrames" id=235]
 animations = [ {
-"frames": [ SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ) ],
+"frames": [ SubResource( 212 ), SubResource( 213 ), SubResource( 214 ), SubResource( 215 ), SubResource( 216 ), SubResource( 217 ) ],
 "loop": true,
 "name": "idle",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ) ],
+"frames": [ SubResource( 218 ), SubResource( 219 ), SubResource( 220 ), SubResource( 221 ) ],
 "loop": true,
 "name": "attacking",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 89 ) ],
+"frames": [ SubResource( 222 ) ],
 "loop": true,
 "name": "falling",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 90 ), SubResource( 91 ) ],
+"frames": [ SubResource( 223 ), SubResource( 224 ) ],
 "loop": false,
 "name": "hurt",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ) ],
+"frames": [ SubResource( 225 ), SubResource( 226 ), SubResource( 227 ), SubResource( 228 ) ],
 "loop": true,
 "name": "moving",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ) ],
+"frames": [ SubResource( 229 ), SubResource( 230 ), SubResource( 231 ), SubResource( 232 ), SubResource( 233 ), SubResource( 234 ) ],
 "loop": false,
 "name": "dead",
 "speed": 6.0
 } ]
 
-[sub_resource type="AtlasTexture" id=103]
+[sub_resource type="AtlasTexture" id=236]
 flags = 4
 atlas = ExtResource( 40 )
 region = Rect2( 0, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=104]
+[sub_resource type="AtlasTexture" id=237]
 flags = 4
 atlas = ExtResource( 40 )
 region = Rect2( 200, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=105]
+[sub_resource type="AtlasTexture" id=238]
 flags = 4
 atlas = ExtResource( 38 )
 region = Rect2( 0, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=106]
+[sub_resource type="AtlasTexture" id=239]
 flags = 4
 atlas = ExtResource( 38 )
 region = Rect2( 200, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=107]
+[sub_resource type="AtlasTexture" id=240]
 flags = 4
 atlas = ExtResource( 38 )
 region = Rect2( 400, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=108]
+[sub_resource type="AtlasTexture" id=241]
 flags = 4
 atlas = ExtResource( 38 )
 region = Rect2( 600, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=109]
+[sub_resource type="AtlasTexture" id=242]
 flags = 4
 atlas = ExtResource( 38 )
 region = Rect2( 800, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=110]
+[sub_resource type="AtlasTexture" id=243]
 flags = 4
 atlas = ExtResource( 38 )
 region = Rect2( 1000, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=111]
+[sub_resource type="AtlasTexture" id=244]
 flags = 4
 atlas = ExtResource( 40 )
 region = Rect2( 0, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=112]
+[sub_resource type="AtlasTexture" id=245]
 flags = 4
 atlas = ExtResource( 37 )
 region = Rect2( 0, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=113]
+[sub_resource type="AtlasTexture" id=246]
 flags = 4
 atlas = ExtResource( 37 )
 region = Rect2( 200, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=114]
+[sub_resource type="AtlasTexture" id=247]
 flags = 4
 atlas = ExtResource( 39 )
 region = Rect2( 0, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=115]
+[sub_resource type="AtlasTexture" id=248]
 flags = 4
 atlas = ExtResource( 39 )
 region = Rect2( 200, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=116]
+[sub_resource type="AtlasTexture" id=249]
 flags = 4
 atlas = ExtResource( 39 )
 region = Rect2( 400, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=117]
+[sub_resource type="AtlasTexture" id=250]
 flags = 4
 atlas = ExtResource( 39 )
 region = Rect2( 600, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=118]
+[sub_resource type="AtlasTexture" id=251]
 flags = 4
 atlas = ExtResource( 37 )
 region = Rect2( 0, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=119]
+[sub_resource type="AtlasTexture" id=252]
 flags = 4
 atlas = ExtResource( 37 )
 region = Rect2( 200, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=120]
+[sub_resource type="AtlasTexture" id=253]
 flags = 4
 atlas = ExtResource( 37 )
 region = Rect2( 400, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=121]
+[sub_resource type="AtlasTexture" id=254]
 flags = 4
 atlas = ExtResource( 37 )
 region = Rect2( 600, 0, 200, 160 )
 
-[sub_resource type="AtlasTexture" id=122]
+[sub_resource type="AtlasTexture" id=255]
 flags = 4
 atlas = ExtResource( 37 )
 region = Rect2( 800, 0, 200, 160 )
 
-[sub_resource type="SpriteFrames" id=123]
+[sub_resource type="SpriteFrames" id=256]
 animations = [ {
-"frames": [ SubResource( 103 ), SubResource( 104 ) ],
+"frames": [ SubResource( 236 ), SubResource( 237 ) ],
 "loop": true,
 "name": "idle",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ) ],
+"frames": [ SubResource( 238 ), SubResource( 239 ), SubResource( 240 ), SubResource( 241 ), SubResource( 242 ), SubResource( 243 ) ],
 "loop": false,
 "name": "attacking",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 111 ) ],
+"frames": [ SubResource( 244 ) ],
 "loop": true,
 "name": "falling",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 112 ), SubResource( 113 ) ],
+"frames": [ SubResource( 245 ), SubResource( 246 ) ],
 "loop": false,
 "name": "hurt",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ) ],
+"frames": [ SubResource( 247 ), SubResource( 248 ), SubResource( 249 ), SubResource( 250 ) ],
 "loop": true,
 "name": "moving",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ) ],
+"frames": [ SubResource( 251 ), SubResource( 252 ), SubResource( 253 ), SubResource( 254 ), SubResource( 255 ) ],
 "loop": false,
 "name": "dead",
 "speed": 6.0
 } ]
 
-[sub_resource type="DynamicFont" id=124]
-size = 90
-font_data = ExtResource( 1 )
+[sub_resource type="InputEventAction" id=257]
 
-[sub_resource type="InputEventAction" id=125]
+[sub_resource type="ShortCut" id=258]
+shortcut = SubResource( 257 )
 
-[sub_resource type="ShortCut" id=126]
-shortcut = SubResource( 125 )
+[sub_resource type="DynamicFont" id=132]
+size = 64
+font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=127]
+[sub_resource type="DynamicFont" id=133]
+size = 32
+font_data = ExtResource( 46 )
+
+[sub_resource type="DynamicFont" id=126]
 size = 54
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=131]
-size = 27
-font_data = ExtResource( 1 )
+[sub_resource type="DynamicFont" id=130]
+size = 64
+font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=129]
+[sub_resource type="DynamicFont" id=131]
+size = 48
+font_data = ExtResource( 46 )
+
+[sub_resource type="DynamicFont" id=259]
 size = 18
 font_data = ExtResource( 1 )
 
-[sub_resource type="ShaderMaterial" id=130]
+[sub_resource type="ShaderMaterial" id=260]
 shader = ExtResource( 32 )
 shader_param/color = Vector3( 0.35, 0.35, 0.45 )
 shader_param/OCTAVES = 3
@@ -766,14 +780,14 @@ tile_data = PoolIntArray( 327684, 0, 0, 327685, 1, 0, 327686, 2, 0, 393217, 0, 0
 
 [node name="Archer" type="AnimatedSprite" parent="Characters"]
 position = Vector2( 415.322, 256.068 )
-frames = SubResource( 26 )
+frames = SubResource( 159 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Rifler" type="AnimatedSprite" parent="Characters"]
 position = Vector2( 285.534, 246.247 )
-frames = SubResource( 55 )
+frames = SubResource( 188 )
 animation = "reload"
 frame = 3
 playing = true
@@ -781,15 +795,14 @@ flip_h = true
 
 [node name="Flasher" type="AnimatedSprite" parent="Characters"]
 position = Vector2( 349.376, 249.053 )
-frames = SubResource( 78 )
+frames = SubResource( 211 )
 animation = "hurt"
-frame = 2
 playing = true
 flip_h = true
 
 [node name="Jackalope2" type="AnimatedSprite" parent="Characters"]
 position = Vector2( 111.312, 315.701 )
-frames = SubResource( 102 )
+frames = SubResource( 235 )
 animation = "idle"
 frame = 5
 playing = true
@@ -797,16 +810,31 @@ flip_h = true
 
 [node name="Jackalope" type="AnimatedSprite" parent="Characters"]
 position = Vector2( 193.63, 315.701 )
-frames = SubResource( 123 )
+frames = SubResource( 256 )
 animation = "idle"
 playing = true
 flip_h = true
 
 [node name="ZombieDeer" type="AnimatedSprite" parent="Characters"]
-position = Vector2( 536.671, 313.741 )
+position = Vector2( 536.671, 256.872 )
 frames = ExtResource( 27 )
 animation = "idle"
-frame = 2
+frame = 3
+playing = true
+
+[node name="Sprite" type="Sprite" parent="Characters"]
+position = Vector2( 1009.97, 276.515 )
+texture = ExtResource( 35 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 752.142, 1180.69, 678.781, 357.958 )
+
+[node name="Wendigo" type="AnimatedSprite" parent="Characters"]
+visible = false
+position = Vector2( 985.151, 325.263 )
+frames = ExtResource( 33 )
+animation = "idle"
+frame = 1
 playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -825,7 +853,8 @@ margin_left = -480.0
 margin_top = 44.7862
 margin_right = 480.0
 margin_bottom = 134.786
-custom_fonts/font = SubResource( 124 )
+custom_fonts/font = ExtResource( 44 )
+custom_colors/font_color = Color( 0.796078, 0.772549, 0.776471, 1 )
 text = "Camp of the Dead"
 align = 1
 __meta__ = {
@@ -837,64 +866,72 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -259.657
-margin_top = -21.3055
-margin_right = 7.3429
-margin_bottom = 194.695
+margin_left = -252.165
+margin_top = 6.99603
+margin_right = -27.1653
+margin_bottom = 107.996
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Start" parent="CanvasLayer/UIControl/Buttons" instance=ExtResource( 2 )]
-margin_right = 266.0
+margin_right = 224.0
+margin_bottom = 36.0
 focus_neighbour_left = NodePath("../Credits")
 focus_neighbour_top = NodePath("../Credits")
 focus_neighbour_right = NodePath("../Instructions")
 focus_neighbour_bottom = NodePath("../Instructions")
 focus_next = NodePath("../Instructions")
 focus_previous = NodePath("../Credits")
-shortcut = SubResource( 126 )
+custom_fonts/font = ExtResource( 36 )
+custom_colors/font_color = Color( 0.796078, 0.772549, 0.776471, 1 )
+shortcut = SubResource( 258 )
 text = "Start"
 path = "res://src/menus/CharacterSelectMenu.tscn"
 autofocus = true
 
 [node name="Instructions" parent="CanvasLayer/UIControl/Buttons" instance=ExtResource( 2 )]
-margin_top = 46.0
-margin_right = 266.0
-margin_bottom = 88.0
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 76.0
 focus_neighbour_left = NodePath("../Start")
 focus_neighbour_top = NodePath("../Start")
 focus_neighbour_right = NodePath("../Options")
 focus_neighbour_bottom = NodePath("../Options")
 focus_next = NodePath("../Options")
 focus_previous = NodePath("../Start")
+custom_fonts/font = ExtResource( 36 )
+custom_colors/font_color = Color( 0.796078, 0.772549, 0.776471, 1 )
 text = "Instructions"
 button_use = "panel"
 
 [node name="Options" parent="CanvasLayer/UIControl/Buttons" instance=ExtResource( 2 )]
 visible = false
-margin_top = 92.0
-margin_right = 266.0
-margin_bottom = 134.0
+margin_top = 91.5
+margin_right = 146.0
+margin_bottom = 134.5
 focus_neighbour_left = NodePath("../Instructions")
 focus_neighbour_top = NodePath("../Instructions")
 focus_neighbour_right = NodePath("../Credits")
 focus_neighbour_bottom = NodePath("../Credits")
 focus_next = NodePath("../Credits")
 focus_previous = NodePath("../Instructions")
+custom_fonts/font = ExtResource( 36 )
 text = "Options"
 button_use = "panel"
 
 [node name="Credits" parent="CanvasLayer/UIControl/Buttons" instance=ExtResource( 2 )]
-margin_top = 92.0
-margin_right = 266.0
-margin_bottom = 134.0
+margin_top = 80.0
+margin_right = 224.0
+margin_bottom = 116.0
 focus_neighbour_left = NodePath("../Options")
 focus_neighbour_top = NodePath("../Options")
 focus_neighbour_right = NodePath("../Start")
 focus_neighbour_bottom = NodePath("../Start")
 focus_next = NodePath("../Start")
 focus_previous = NodePath("../Options")
+custom_fonts/font = ExtResource( 36 )
+custom_colors/font_color = Color( 0.796078, 0.772549, 0.776471, 1 )
 text = "Credits"
 button_use = "panel"
 
@@ -926,9 +963,9 @@ margin_bottom = 516.157
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.77264
-margin_top = -2.28485
+margin_top = -6.71646
 margin_right = -1.77264
-margin_bottom = -2.28485
+margin_bottom = -6.71646
 custom_constants/separation = 30
 alignment = 1
 __meta__ = {
@@ -936,10 +973,10 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="CanvasLayer/UIControl/PanelController/InstructionsPanel/VBoxContainer"]
-margin_top = 19.0
+margin_top = 35.0
 margin_right = 639.0
-margin_bottom = 73.0
-custom_fonts/font = SubResource( 127 )
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 132 )
 text = "Instructions"
 align = 1
 __meta__ = {
@@ -947,10 +984,10 @@ __meta__ = {
 }
 
 [node name="Instructions" type="Label" parent="CanvasLayer/UIControl/PanelController/InstructionsPanel/VBoxContainer"]
-margin_top = 103.0
+margin_top = 130.0
 margin_right = 639.0
-margin_bottom = 340.0
-custom_fonts/font = SubResource( 131 )
+margin_bottom = 325.0
+custom_fonts/font = SubResource( 133 )
 custom_constants/line_spacing = 15
 text = "WASD/ Arrow keys to move
 J to attack
@@ -984,7 +1021,7 @@ __meta__ = {
 margin_top = 153.0
 margin_right = 639.0
 margin_bottom = 207.0
-custom_fonts/font = SubResource( 127 )
+custom_fonts/font = SubResource( 126 )
 text = "Options"
 align = 1
 __meta__ = {
@@ -1004,7 +1041,7 @@ margin_left = -320.0
 margin_top = 18.6174
 margin_right = 320.0
 margin_bottom = 72.6174
-custom_fonts/font = SubResource( 127 )
+custom_fonts/font = SubResource( 130 )
 text = "Credits"
 align = 1
 __meta__ = {
@@ -1012,10 +1049,10 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel"]
-margin_left = 49.0
+margin_left = 27.2521
 margin_top = 79.0
-margin_right = 679.0
-margin_bottom = 359.0
+margin_right = 763.252
+margin_bottom = 399.0
 rect_scale = Vector2( 0.8, 0.8 )
 custom_constants/vseparation = 20
 custom_constants/hseparation = 20
@@ -1025,7 +1062,7 @@ __meta__ = {
 }
 
 [node name="Remtaine" type="HBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer"]
-margin_right = 334.0
+margin_right = 370.0
 margin_bottom = 150.0
 custom_constants/separation = 25
 
@@ -1038,7 +1075,7 @@ expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Remtaine"]
 margin_left = 175.0
-margin_right = 334.0
+margin_right = 370.0
 margin_bottom = 150.0
 alignment = 1
 __meta__ = {
@@ -1046,10 +1083,10 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Remtaine/VBoxContainer"]
-margin_top = 46.0
-margin_right = 159.0
+margin_top = 43.0
+margin_right = 195.0
 margin_bottom = 73.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 131 )
 text = "Remtaine"
 align = 1
 __meta__ = {
@@ -1058,10 +1095,10 @@ __meta__ = {
 
 [node name="Role" type="Label" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Remtaine/VBoxContainer"]
 margin_top = 77.0
-margin_right = 159.0
-margin_bottom = 104.0
+margin_right = 195.0
+margin_bottom = 107.0
 rect_pivot_offset = Vector2( -1810.2, 363.685 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 131 )
 text = "Programmer"
 align = 1
 __meta__ = {
@@ -1069,8 +1106,8 @@ __meta__ = {
 }
 
 [node name="Nebelstern" type="HBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer"]
-margin_left = 354.0
-margin_right = 670.0
+margin_left = 390.0
+margin_right = 736.0
 margin_bottom = 150.0
 custom_constants/separation = 25
 
@@ -1083,7 +1120,7 @@ expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Nebelstern"]
 margin_left = 175.0
-margin_right = 316.0
+margin_right = 346.0
 margin_bottom = 150.0
 alignment = 1
 __meta__ = {
@@ -1091,10 +1128,10 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Nebelstern/VBoxContainer"]
-margin_top = 46.0
-margin_right = 141.0
+margin_top = 43.0
+margin_right = 171.0
 margin_bottom = 73.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 131 )
 text = "Nebelstern"
 align = 1
 __meta__ = {
@@ -1103,9 +1140,9 @@ __meta__ = {
 
 [node name="Role" type="Label" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Nebelstern/VBoxContainer"]
 margin_top = 77.0
-margin_right = 141.0
-margin_bottom = 104.0
-custom_fonts/font = ExtResource( 5 )
+margin_right = 171.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 131 )
 text = "Artist"
 align = 1
 __meta__ = {
@@ -1114,7 +1151,7 @@ __meta__ = {
 
 [node name="Janusz" type="HBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer"]
 margin_top = 170.0
-margin_right = 334.0
+margin_right = 370.0
 margin_bottom = 320.0
 custom_constants/separation = 25
 
@@ -1127,7 +1164,7 @@ expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Janusz"]
 margin_left = 175.0
-margin_right = 313.0
+margin_right = 337.0
 margin_bottom = 150.0
 alignment = 1
 __meta__ = {
@@ -1135,10 +1172,10 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Janusz/VBoxContainer"]
-margin_top = 46.0
-margin_right = 138.0
+margin_top = 43.0
+margin_right = 162.0
 margin_bottom = 73.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 131 )
 text = "Janusz"
 align = 1
 __meta__ = {
@@ -1147,9 +1184,9 @@ __meta__ = {
 
 [node name="Role" type="Label" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Janusz/VBoxContainer"]
 margin_top = 77.0
-margin_right = 138.0
-margin_bottom = 104.0
-custom_fonts/font = ExtResource( 5 )
+margin_right = 162.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 131 )
 text = "SFX Artist"
 align = 1
 __meta__ = {
@@ -1157,9 +1194,9 @@ __meta__ = {
 }
 
 [node name="Apmus" type="HBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer"]
-margin_left = 354.0
+margin_left = 390.0
 margin_top = 170.0
-margin_right = 670.0
+margin_right = 736.0
 margin_bottom = 320.0
 custom_constants/separation = 25
 
@@ -1167,12 +1204,12 @@ custom_constants/separation = 25
 margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
-texture = ExtResource( 6 )
+texture = ExtResource( 45 )
 expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Apmus"]
 margin_left = 175.0
-margin_right = 301.0
+margin_right = 325.0
 margin_bottom = 150.0
 alignment = 1
 __meta__ = {
@@ -1180,10 +1217,10 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Apmus/VBoxContainer"]
-margin_top = 46.0
-margin_right = 126.0
+margin_top = 43.0
+margin_right = 150.0
 margin_bottom = 73.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 131 )
 text = "Apmus"
 align = 1
 __meta__ = {
@@ -1192,9 +1229,9 @@ __meta__ = {
 
 [node name="Role" type="Label" parent="CanvasLayer/UIControl/PanelController/CreditsPanel/GridContainer/Apmus/VBoxContainer"]
 margin_top = 77.0
-margin_right = 126.0
-margin_bottom = 104.0
-custom_fonts/font = ExtResource( 5 )
+margin_right = 150.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 131 )
 text = "Composer"
 align = 1
 __meta__ = {
@@ -1210,7 +1247,7 @@ margin_left = -51.7296
 margin_top = -19.3163
 margin_right = -3.72961
 margin_bottom = -1.31628
-custom_fonts/font = SubResource( 129 )
+custom_fonts/font = SubResource( 259 )
 text = "v0.1.2"
 align = 2
 valign = 2
@@ -1219,13 +1256,13 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource( 130 )
+material = SubResource( 260 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -509.815
-margin_top = -203.896
-margin_right = 530.185
-margin_bottom = 256.104
+margin_left = -508.762
+margin_top = -205.041
+margin_right = 531.238
+margin_bottom = 254.959
 color = Color( 0.0980392, 0.054902, 0.286275, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

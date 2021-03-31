@@ -2,7 +2,7 @@ class_name StaminaBar
 extends TextureProgress
 
 const DRAIN = 4
-const ADD = 1
+const ADD = 2
 var is_active := false
 var on_cd := false
 

@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/states/Dead.gd"
 }, {
+"base": "Node2D",
+"class": "EnemiesSpawner",
+"language": "GDScript",
+"path": "res://src/spawners/EnemiesSpawner.gd"
+}, {
 "base": "EnemyMoving",
 "class": "EnemyChasing",
 "language": "GDScript",
@@ -209,6 +214,7 @@ _global_script_class_icons={
 "Character": "",
 "CharacterSelectButton": "",
 "Dead": "",
+"EnemiesSpawner": "",
 "EnemyChasing": "",
 "EnemyDead": "",
 "EnemyIdle": "",
@@ -358,6 +364,7 @@ jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
  ]
 }
 pause={

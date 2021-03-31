@@ -1,18 +1,19 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/ChevyRay - Softsquare.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/menus/Buttons/MainMenuButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/heroes/archer/archer-idle.png" type="Texture" id=3]
 [ext_resource path="res://assets/audio/themes/Base Ambience.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/screens/ending-screen2-l.png" type="Texture" id=5]
-
-
-
-
+[ext_resource path="res://assets/fonts/ChevyRay - Skullboy.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 90
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 6 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
@@ -54,39 +55,53 @@ text = "You Won!"
 align = 1
 
 [node name="Buttons" type="HBoxContainer" parent="."]
-margin_top = 475.487
-margin_right = 960.0
-margin_bottom = 517.487
-custom_constants/separation = 100
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -480.0
+margin_top = -56.334
+margin_right = 480.0
+margin_bottom = -10.334
+custom_constants/separation = 50
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Restart" parent="Buttons" instance=ExtResource( 2 )]
-margin_left = 64.0
-margin_right = 212.0
+margin_left = 54.0
+margin_right = 230.0
+margin_bottom = 46.0
 focus_neighbour_left = NodePath("../MainMenu")
 focus_neighbour_top = NodePath("../MainMenu")
 focus_neighbour_right = NodePath("../CharacterSelect")
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.796078, 0.772549, 0.776471, 1 )
 text = "Restart"
 path = "res://src/levels/Level.tscn"
 autofocus = true
 
 [node name="CharacterSelect" parent="Buttons" instance=ExtResource( 2 )]
-margin_left = 312.0
-margin_right = 616.0
+margin_left = 280.0
+margin_right = 636.0
+margin_bottom = 46.0
 focus_neighbour_left = NodePath("../Restart")
 focus_neighbour_right = NodePath("../MainMenu")
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.796078, 0.772549, 0.776471, 1 )
 text = "Character Select"
 path = "res://src/menus/CharacterSelectMenu.tscn"
 
 [node name="MainMenu" parent="Buttons" instance=ExtResource( 2 )]
-margin_left = 716.0
-margin_right = 896.0
+margin_left = 686.0
+margin_right = 906.0
+margin_bottom = 46.0
 focus_neighbour_left = NodePath("../CharacterSelect")
 focus_neighbour_right = NodePath("../Restart")
 focus_neighbour_bottom = NodePath("../Restart")
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.796078, 0.772549, 0.776471, 1 )
 text = "Main Menu"
 path = "res://src/menus/MainMenu.tscn"
 

@@ -18,8 +18,8 @@ shape = SubResource( 1 )
 frames = ExtResource( 2 )
 
 [node name="Hitbox" parent="Pivot/Hitbox" index="0"]
-position = Vector2( 24.1565, -12.7228 )
-scale = Vector2( 6, 5.76 )
+position = Vector2( 49.792, -32.532 )
+scale = Vector2( 3.73436, 3.27724 )
 
 [node name="StateMachine" parent="." index="2"]
 chase_dist = 200

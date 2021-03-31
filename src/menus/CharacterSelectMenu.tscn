@@ -1,23 +1,19 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/fonts/ChevyRay - Softsquare.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/preset fonts/TitleFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/menus/Buttons/CharacterSelectButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/menus/CharacterHolder.gd" type="Script" id=3]
 [ext_resource path="res://src/menus/Buttons/MainMenuButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/images/heroes/rifler/old/rifler.png" type="Texture" id=5]
 [ext_resource path="res://assets/audio/themes/Base Ambience.ogg" type="AudioStream" id=6]
-[ext_resource path="res://assets/images/heroes/flasher/flash-fall-l.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/backgrounds/far backgrounds/swamp-bg2B.png" type="Texture" id=8]
+[ext_resource path="res://resources/preset fonts/MenuFont.tres" type="DynamicFont" id=9]
 
-[sub_resource type="DynamicFont" id=1]
-size = 90
-font_data = ExtResource( 1 )
-
-[sub_resource type="InputEventAction" id=2]
+[sub_resource type="InputEventAction" id=1]
 action = "ui_cancel"
 
-[sub_resource type="ShortCut" id=3]
-shortcut = SubResource( 2 )
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
 
 [node name="CharacterSelectMenu" type="Control"]
 anchor_right = 1.0
@@ -36,16 +32,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -480.0
-margin_top = 19.6516
+margin_top = 31.6055
 margin_right = 480.0
-margin_bottom = 109.652
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 160.606
+custom_fonts/font = ExtResource( 1 )
 text = "Character Select"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CharacterHolder" type="HBoxContainer" parent="."]
 anchor_left = 0.5
@@ -53,9 +52,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -480.0
-margin_top = -87.964
+margin_top = -109.394
 margin_right = 480.0
-margin_bottom = 112.036
+margin_bottom = 90.606
 alignment = 1
 script = ExtResource( 3 )
 __meta__ = {
@@ -64,8 +63,8 @@ __meta__ = {
 path = "res://src/levels/Level.tscn"
 
 [node name="Archer" parent="CharacterHolder" instance=ExtResource( 2 )]
-margin_left = 238.0
-margin_right = 410.0
+margin_left = 326.0
+margin_right = 498.0
 autofocus = true
 
 [node name="Character" parent="CharacterHolder/Archer" index="0"]
@@ -76,9 +75,14 @@ focus_neighbour_bottom = NodePath("../../Rifler/Character")
 focus_next = NodePath("../../Rifler/Character")
 focus_previous = NodePath("../../Flasher/Character")
 
+[node name="Name" parent="CharacterHolder/Archer" index="1"]
+margin_bottom = 200.0
+custom_fonts/font = ExtResource( 9 )
+text = "Darryl"
+
 [node name="Rifler" parent="CharacterHolder" instance=ExtResource( 2 )]
-margin_left = 414.0
-margin_right = 546.0
+margin_left = 502.0
+margin_right = 634.0
 
 [node name="Character" parent="CharacterHolder/Rifler" index="0"]
 margin_right = 132.0
@@ -92,29 +96,48 @@ icon = ExtResource( 5 )
 
 [node name="Name" parent="CharacterHolder/Rifler" index="1"]
 margin_right = 132.0
-text = "Rifler"
+margin_bottom = 200.0
+custom_fonts/font = ExtResource( 9 )
+text = "Cherryl"
 
-[node name="Flasher" parent="CharacterHolder" instance=ExtResource( 2 )]
-margin_left = 550.0
-margin_right = 722.0
+[node name="Instructions" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 403.046
+margin_right = 6.10352e-05
+margin_bottom = -73.9544
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Character" parent="CharacterHolder/Flasher" index="0"]
-focus_neighbour_left = NodePath("../../Rifler/Character")
-focus_neighbour_top = NodePath("../../Rifler/Character")
-focus_neighbour_right = NodePath("../../Archer/Character")
-focus_neighbour_bottom = NodePath("../../Archer/Character")
-focus_next = NodePath("../../Archer/Character")
-focus_previous = NodePath("../../Rifler/Character")
-icon = ExtResource( 7 )
+[node name="Instructions1" type="Label" parent="Instructions"]
+margin_left = 41.0
+margin_right = 254.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 9 )
+text = "WASD to move
+J to attack"
+align = 1
 
-[node name="Name" parent="CharacterHolder/Flasher" index="1"]
-text = "Flasher"
+[node name="Instructions3" type="Label" parent="Instructions"]
+margin_left = 304.0
+margin_right = 511.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 9 )
+text = "Space to jump
+Shift to run"
+align = 1
 
-[node name="Fire" type="TextureRect" parent="."]
-margin_left = 568.0
-margin_top = 182.036
-margin_right = 568.0
-margin_bottom = 382.036
+[node name="Instructions2" type="Label" parent="Instructions"]
+margin_left = 561.0
+margin_right = 918.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 9 )
+text = "Hide behind big decor
+Pick up all radio pieces!"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -128,7 +151,8 @@ margin_left = -108.549
 margin_top = -50.2744
 margin_right = 7.45142
 margin_bottom = -8.27435
-shortcut = SubResource( 3 )
+custom_fonts/font = ExtResource( 9 )
+shortcut = SubResource( 2 )
 text = "Back"
 is_arrowable = false
 path = "res://src/menus/MainMenu.tscn"
@@ -140,10 +164,7 @@ stream = ExtResource( 6 )
 autoplay = true
 [connection signal="pressed" from="CharacterHolder/Archer/Character" to="CharacterHolder" method="_on_Archer_pressed"]
 [connection signal="pressed" from="CharacterHolder/Rifler/Character" to="CharacterHolder" method="_on_Rifler_pressed"]
-[connection signal="pressed" from="CharacterHolder/Flasher/Character" to="CharacterHolder" method="_on_Flasher_pressed"]
 
 [editable path="CharacterHolder/Archer"]
 
 [editable path="CharacterHolder/Rifler"]
-
-[editable path="CharacterHolder/Flasher"]

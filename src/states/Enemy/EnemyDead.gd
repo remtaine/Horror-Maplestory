@@ -9,6 +9,8 @@ func _ready() -> void:
 	
 func enter():
 	owner.sprite.modulate = Color(GRAY_TONE, GRAY_TONE, GRAY_TONE)
+	owner.set_collision_layer(0)
+	owner.set_collision_mask(1)
 	.enter()
 
 

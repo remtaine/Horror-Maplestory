@@ -36,6 +36,8 @@ func _physics_process(_delta):
 		change_state(_state.interpret_inputs(input))
 	_state.run(input)
 		
+	if position.y > 2000:
+		change_state("dead")
 		
 func change_state(state_name, repeat = false):
 	var new_state = possible_states[state_name]

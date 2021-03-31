@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/images/white_square_pixel.png" type="Texture" id=4]
 [ext_resource path="res://src/UI/HPBar.gd" type="Script" id=5]
 [ext_resource path="res://resources/spritesheets/ArcherSpritesheet.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://assets/fonts/ChevyRay - Skullboy.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/images/heroes/archer/archer-idle.png" type="Texture" id=10]
 [ext_resource path="res://resources/spritesheets/HPWalkieTalkieSpritesheet.tres" type="SpriteFrames" id=11]
 [ext_resource path="res://assets/images/objects/radio-l.png" type="Texture" id=12]
@@ -15,7 +16,6 @@
 [ext_resource path="res://src/addons/StaminaBar.gd" type="Script" id=16]
 [ext_resource path="res://src/UI/HPWalkieTalkie.gd" type="Script" id=17]
 [ext_resource path="res://assets/audio/UI/UI_Select.wav" type="AudioStream" id=18]
-[ext_resource path="res://assets/fonts/ChevyRay - Softsquare.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://src/characters/PlayerDead.gd" type="Script" id=20]
 [ext_resource path="res://src/UI/PlayerUIPivot.gd" type="Script" id=21]
 [ext_resource path="res://resources/preset fonts/DebugFont.tres" type="DynamicFont" id=22]
@@ -92,8 +92,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="DynamicFont" id=6]
-size = 18
-font_data = ExtResource( 19 )
+size = 32
+font_data = ExtResource( 7 )
 
 [node name="Player" groups=[
 "player",
@@ -116,7 +116,7 @@ script = ExtResource( 3 )
 speed = 75
 
 [node name="RunCD" type="Timer" parent="StateMachine/Moving" index="1"]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="Attacking" parent="StateMachine" index="4"]
@@ -262,14 +262,17 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -25.895
-margin_top = -10.435
-margin_right = 14.105
-margin_bottom = 7.56503
+margin_left = -28.6949
+margin_top = -7.81003
+margin_right = 11.3051
+margin_bottom = 12.19
 custom_fonts/font = SubResource( 6 )
 text = "0%"
 align = 2
 valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StateLabel" parent="Debug" index="0"]
 margin_left = -97.8241

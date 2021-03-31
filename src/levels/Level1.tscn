@@ -1,0 +1,457 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://src/objects/Supplies.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/levels/Level.gd" type="Script" id=2]
+[ext_resource path="res://resources/tilesets/Ground.tres" type="TileSet" id=3]
+[ext_resource path="res://src/debug/DebugHolder.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/ChevyRay - Softsquare.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://src/debug/FPS.gd" type="Script" id=6]
+[ext_resource path="res://assets/images/map/lengthmap.png" type="Texture" id=7]
+[ext_resource path="res://src/environment/GroundHolder.gd" type="Script" id=9]
+[ext_resource path="res://assets/audio/themes/Base Ambience.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/images/backgrounds/far backgrounds/swamp-bg1.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/backgrounds/treeline2-lc.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/backgrounds/black treeline without eye.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/backgrounds/black treeline with eye.png" type="Texture" id=16]
+[ext_resource path="res://resources/shaders/Grayscale.shader" type="Shader" id=18]
+[ext_resource path="res://resources/shaders/Fog.shader" type="Shader" id=19]
+[ext_resource path="res://resources/shaders/Vignette.shader" type="Shader" id=20]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 19 )
+shader_param/color = Vector3( 0.35, 0.35, 0.4 )
+shader_param/OCTAVES = 3
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 20 )
+shader_param/player_position = Vector2( 0.5, 0.5 )
+shader_param/color = Color( 0, 0, 0, 1 )
+shader_param/MULTIPLIER = 0.7
+shader_param/SCALE = 0.5
+shader_param/SOFTNESS = 2.0
+shader_param/SMOOTH_STEP = 0.2
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 18
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 18
+font_data = ExtResource( 5 )
+
+[node name="Level" type="Node"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+path = "res://src/menus/MainMenu.tscn"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0.9 )
+motion_mirroring = Vector2( 900, 0 )
+
+[node name="SwampBG1-1" type="TextureRect" parent="ParallaxBackground/ParallaxLayer1"]
+margin_right = 900.0
+margin_bottom = 600.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwampBG1-2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer1"]
+margin_left = 900.0
+margin_right = 1800.0
+margin_bottom = 600.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwampBG1-3" type="TextureRect" parent="ParallaxBackground/ParallaxLayer1"]
+margin_left = -900.0
+margin_right = -6.10352e-05
+margin_bottom = 600.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+modulate = Color( 0.149841, 0.154148, 0.21875, 1 )
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 800, 0 )
+
+[node name="Pic1" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( -22.4727, -35.441, 131.024, 643.969 )
+
+[node name="Pic2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( -22.4727, -35.441, 131.024, 643.969 )
+
+[node name="Pic3" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( -800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( -22.4727, -35.441, 146.473, 643.969 )
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+modulate = Color( 0.149841, 0.154148, 0.21875, 1 )
+position = Vector2( 0, 371.083 )
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 800, 0 )
+
+[node name="Pic1" type="Sprite" parent="ParallaxBackground/ParallaxLayer7"]
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( -22.4727, -35.441, 131.024, 643.969 )
+
+[node name="Pic2" type="Sprite" parent="ParallaxBackground/ParallaxLayer7"]
+position = Vector2( 800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( -22.4727, -35.441, 131.024, 643.969 )
+
+[node name="Pic3" type="Sprite" parent="ParallaxBackground/ParallaxLayer7"]
+position = Vector2( -800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( -22.4727, -35.441, 146.473, 643.969 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+modulate = Color( 0.101961, 0.101961, 0.164706, 1 )
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 800, 0 )
+
+[node name="Pic2" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 250.726, -24.29, 152.274, 646.757 )
+
+[node name="Pic3" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 250.726, -24.29, 175.628, 646.757 )
+
+[node name="Pic4" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( -800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 250.726, -24.29, 175.628, 646.757 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 800, 0 )
+
+[node name="Pic3" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 590.831, -10.3513, 147.169, 630.03 )
+
+[node name="Pic4" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 590.831, -10.3513, 147.75, 630.03 )
+
+[node name="Pic5" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( -800, 0 )
+texture = ExtResource( 14 )
+region_enabled = true
+region_rect = Rect2( 590.831, -10.3513, 147.75, 630.03 )
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.133333, 0.12549, 0.12549, 1 )
+position = Vector2( 635.615, 176.467 )
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer5"]
+margin_top = -227.513
+margin_right = 900.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer5"]
+margin_left = 1000.0
+margin_top = -227.513
+margin_right = 1900.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="ParallaxBackground/ParallaxLayer5"]
+margin_left = -1000.0
+margin_top = -227.513
+margin_right = -100.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer5"]
+margin_left = 772.191
+margin_top = 249.673
+margin_right = 1772.19
+margin_bottom = 749.673
+color = Color( 0.0196078, 0.0117647, 0.0117647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.156863, 0.12549, 0.12549, 1 )
+position = Vector2( 635.615, 176.467 )
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer8"]
+margin_top = -227.513
+margin_right = 900.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer8"]
+margin_left = 1000.0
+margin_top = -227.513
+margin_right = 1900.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="ParallaxBackground/ParallaxLayer8"]
+margin_left = -1000.0
+margin_top = -227.513
+margin_right = -100.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer8"]
+margin_left = 772.191
+margin_top = 249.673
+margin_right = 1772.19
+margin_bottom = 749.673
+color = Color( 0.0196078, 0.0117647, 0.0117647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.380392, 0.364706, 0.517647, 1 )
+position = Vector2( 448.447, 176.467 )
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 2000, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer6"]
+margin_top = -227.513
+margin_right = 900.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer6"]
+margin_left = 2000.0
+margin_top = -227.513
+margin_right = 2900.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="ParallaxBackground/ParallaxLayer6"]
+margin_left = -2000.0
+margin_top = -227.513
+margin_right = -1100.0
+margin_bottom = 372.487
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerSpawnPoint" type="Position2D" parent="."]
+position = Vector2( 500, 100 )
+
+[node name="LevelSprite" type="Sprite" parent="."]
+position = Vector2( 0, 36 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+format = 1
+tile_data = PoolIntArray( 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0, 458775, 1, 0, 458776, 1, 0, 458777, 1, 0, 458778, 1, 0, 458779, 1, 0, 458780, 1, 0, 458781, 1, 0, 458782, 1, 0, 458783, 1, 0, 458784, 1, 0, 458785, 1, 0, 458786, 1, 0, 458787, 1, 0, 458788, 1, 0, 458789, 1, 0, 458790, 1, 0, 458791, 1, 0, 458792, 1, 0, 458793, 1, 0, 458794, 1, 0, 458795, 1, 0, 458796, 1, 0, 458797, 1, 0, 458798, 1, 0, 458799, 1, 0, 458800, 1, 0, 458801, 1, 0, 458802, 1, 0, 458803, 1, 0, 458804, 1, 0, 458805, 1, 0, 458806, 1, 0, 458807, 1, 0, 458808, 1, 0, 458809, 1, 0, 458810, 1, 0, 458811, 1, 0, 458812, 1, 0, 458813, 1, 0, 458814, 1, 0, 458815, 1, 0, 458820, 1, 0, 458821, 1, 0, 458822, 1, 0, 458823, 1, 0, 458824, 1, 0, 458825, 1, 0, 458826, 1, 0, 458827, 1, 0, 458828, 1, 0, 458832, 1, 0, 458833, 1, 0, 458834, 1, 0, 458835, 1, 0, 458836, 1, 0, 458837, 1, 0, 458838, 1, 0, 458839, 1, 0, 458840, 1, 0 )
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Supplies1" parent="Objects" instance=ExtResource( 1 )]
+position = Vector2( -1386.89, 308.717 )
+
+[node name="Supplies2" parent="Objects" instance=ExtResource( 1 )]
+position = Vector2( 3172.62, 375.984 )
+
+[node name="Supplies3" parent="Objects" instance=ExtResource( 1 )]
+position = Vector2( 2230.07, 530.057 )
+
+[node name="Supplies4" parent="Objects" instance=ExtResource( 1 )]
+position = Vector2( 1133.57, 398.126 )
+
+[node name="Supplies5" parent="Objects" instance=ExtResource( 1 )]
+position = Vector2( -40.26, 368.832 )
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="Enemies" type="Node" parent="Characters"]
+
+[node name="ObjectsHolder" type="Node2D" parent="."]
+
+[node name="GroundHolder" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="PostProcessing" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fog" type="ColorRect" parent="PostProcessing"]
+material = SubResource( 1 )
+margin_left = -1991.75
+margin_top = -994.373
+margin_right = 4008.25
+margin_bottom = 2005.63
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Darkness" type="ColorRect" parent="PostProcessing"]
+self_modulate = Color( 0.054902, 0.0313726, 0.180392, 0.117647 )
+anchor_left = -0.00165532
+anchor_right = 0.998344
+anchor_bottom = 1.0
+margin_left = -1719.38
+margin_top = -605.351
+margin_right = 2280.62
+margin_bottom = 1394.65
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Vignette" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Greyscale" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Debug" type="Control" parent="CanvasLayer" groups=[
+"debug",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 8.87491
+margin_bottom = 8.87488
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FPS" type="Label" parent="CanvasLayer/Debug"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -502.969
+margin_top = -40.9936
+margin_right = -2.9693
+margin_bottom = -13.9935
+custom_fonts/font = SubResource( 4 )
+text = "FPS: 60"
+align = 2
+valign = 2
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instructions" type="Label" parent="CanvasLayer/Debug"]
+anchor_left = -0.00143315
+anchor_top = 1.0
+anchor_right = -0.00143312
+anchor_bottom = 1.0
+margin_left = 8.40461
+margin_top = -47.9356
+margin_right = 764.405
+margin_bottom = -11.9356
+custom_fonts/font = SubResource( 5 )
+text = "R - reset   M - main menu   G - toggle debug"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Theme" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 11 )
+autoplay = true

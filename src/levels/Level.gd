@@ -23,6 +23,8 @@ func _ready():
 	Global.current_character = get(Global.character_selected_type).instance()
 	Global.current_character.position = player_spawn_point.position
 	$Characters.add_child(Global.current_character)
+	var _error = get_tree().call_group("debug", "toggle")
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("reset"):

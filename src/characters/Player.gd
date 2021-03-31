@@ -11,6 +11,7 @@ onready var scope : RayCast2D = $Pivot/Scope
 onready var radio_progress : TextureProgress = $UI/UIPivot/RadioProgress
 onready var hidden_fade : ColorRect = $UI/UIPivot/HiddenFade
 onready var hidden_label : Label = $UI/UIPivot/HiddenLabel
+export var pickup_amount := 5
 
 signal has_won
 #signal has_lost
@@ -18,6 +19,8 @@ signal has_won
 
 signal enter_hide
 signal leave_hide
+signal pickup
+
 
 func _ready() -> void:
 	hidden_fade.visible = false
@@ -30,32 +33,34 @@ func _ready() -> void:
 	
 	
 
-func _physics_process(delta: float) -> void:
-	._physics_process(delta)
-	if position.x > REPEAT_DIST + relative_dist and ground_set:
-		relative_dist += REPEAT_DIST
-		ground_set = false
-
-		emit_signal("edge_reached", Vector2.RIGHT, self)
-		ground_set = true 
-
-	elif position.x < -REPEAT_DIST + relative_dist and ground_set:
-		relative_dist -= REPEAT_DIST		
-		ground_set = false
-
-		emit_signal("edge_reached", Vector2.LEFT, self)
-
-		ground_set = true
+#func _physics_process(delta: float) -> void:
+#	._physics_process(delta)
+#	if position.x > REPEAT_DIST + relative_dist and ground_set:
+#		relative_dist += REPEAT_DIST
+#		ground_set = false
+#
+#		emit_signal("edge_reached", Vector2.RIGHT, self)
+#		ground_set = true 
+#
+#	elif position.x < -REPEAT_DIST + relative_dist and ground_set:
+#		relative_dist -= REPEAT_DIST		
+#		ground_set = false
+#
+#		emit_signal("edge_reached", Vector2.LEFT, self)
+#
+#		ground_set = true
 
 
 func pick_up (item : String) -> void:
 	match item:
 		"":
 			play_sound("pickup")
-			radio_progress.value += radio_progress.max_value/5
+			radio_progress.value += radio_progress.max_value/pickup_amount
 			radio_progress.get_node("TextProgress").text = String(floor(radio_progress.value)) + "%"
 			if radio_progress.value >= radio_progress.max_value:
 				emit_signal("has_won")
+			else:
+				emit_signal("pickup")
 #func _on_GroundHolder_ground_set() -> void:
 #	ground_set = true
 

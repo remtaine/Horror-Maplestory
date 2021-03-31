@@ -1,17 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/heroes/faces/jack.png" type="Texture" id=2]
-
-
-
-
+[ext_resource path="res://src/addons/Scope.tscn" type="PackedScene" id=3]
 
 [node name="Archer" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="Pivot" index="0"]
-frame = 6
+animation = "idle"
+frame = 3
 playing = true
+
+[node name="Scope" parent="Pivot" index="2" instance=ExtResource( 3 )]
+visible = true
 
 [node name="Dead" parent="StateMachine" index="5"]
 sprite_excess = 10
@@ -21,6 +22,7 @@ position = Vector2( 0.0117262, 0.627198 )
 scale = Vector2( 0.00500279, 0.0750419 )
 texture = ExtResource( 2 )
 region_enabled = false
+[connection signal="attack_launched" from="StateMachine/Attacking" to="Pivot/Scope" method="_on_Attacking_attack_launched"]
 [connection signal="animation_started" from="StateMachine/Hurt/AnimationPlayer" to="Camera2D/Screenshake" method="_on_AnimationPlayer_animation_started"]
 [connection signal="attribute_changed" from="Attributes/Health" to="UI/UIPivot/WalkieTalkieControl/HPWalkieTalkie" method="_on_Health_attribute_changed"]
 [connection signal="is_dead" from="Attributes/Health" to="Camera2D/Screenshake" method="_on_Health_is_dead"]

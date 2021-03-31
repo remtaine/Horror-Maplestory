@@ -9,5 +9,5 @@
 texture = ExtResource( 2 )
 
 [node name="Buttons" parent="." index="3"]
-margin_top = 482.876
-margin_bottom = 524.876
+margin_top = -55.2311
+margin_bottom = -9.23108

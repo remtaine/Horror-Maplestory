@@ -4,7 +4,7 @@ extends Control
 const HIDDEN_PANEL_POS_X = -1000.0
 var selected_panel_pos_x : float
 
-onready var selected_panel : Panel = $BlankPanel
+onready var selected_panel : ColorRect = $BlankPanel
 
 signal panel_activated
 
@@ -19,7 +19,7 @@ func setup_panels() -> void:
 		else:
 			selected_panel_pos_x = panel.rect_position.x
 
-func activate_panel(panel : Panel) -> void:
+func activate_panel(panel : ColorRect) -> void:
 	if panel == selected_panel:
 		activate_panel($BlankPanel)
 		return

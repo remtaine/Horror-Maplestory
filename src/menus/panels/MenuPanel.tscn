@@ -6,12 +6,10 @@
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[node name="Panel" type="Panel"]
+[node name="Panel" type="ColorRect"]
 margin_right = 640.0
 margin_bottom = 360.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color( 0.0980392, 0.109804, 0.101961, 1 )
 
 [node name="BackButton" type="Button" parent="."]
 visible = false

@@ -22,6 +22,6 @@ func _ready() -> void:
 func _on_Attacking_attack_launched() -> void:
 	if is_colliding():
 		var collider = get_collider()
-		if collider.is_in_group("enemies") and collider.has_method("take_damage"):
+		if collider.is_in_group("enemies") and not collider.is_dead and collider.has_method("take_damage"):
 			collider.take_damage(owner.damage)
 			emit_signal("enemy_hit")
